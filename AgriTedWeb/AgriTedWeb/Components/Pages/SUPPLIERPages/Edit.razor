@@ -1,0 +1,104 @@
+﻿@page "/suppliers/edit"
+@using Microsoft.EntityFrameworkCore
+@using DataAccess
+@inject IDbContextFactory<AgriTedWeb.Data.AgriTedWebContext> DbFactory
+@inject NavigationManager NavigationManager
+
+<PageTitle>Edit</PageTitle>
+
+<h1>Edit</h1>
+
+<h2>SUPPLIER</h2>
+<hr />
+@if (SUPPLIER is null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <div class="row">
+        <div class="col-md-4">
+            <EditForm method="post" Model="SUPPLIER" OnValidSubmit="UpdateSUPPLIER" FormName="edit" Enhance>
+                <DataAnnotationsValidator />
+                <ValidationSummary role="alert"/>
+                <input type="hidden" name="SUPPLIER.SupplierId" value="@SUPPLIER.SupplierId" />
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email:</label>
+                    <InputText id="email" @bind-Value="SUPPLIER.Email" class="form-control" />
+                    <ValidationMessage For="() => SUPPLIER.Email" class="text-danger" />
+                </div>
+                <div class="mb-3">
+                    <label for="companyname" class="form-label">CompanyName:</label>
+                    <InputText id="companyname" @bind-Value="SUPPLIER.CompanyName" class="form-control" />
+                    <ValidationMessage For="() => SUPPLIER.CompanyName" class="text-danger" />
+                </div>
+                <div class="mb-3">
+                    <label for="phonenumber" class="form-label">PhoneNumber:</label>
+                    <InputText id="phonenumber" @bind-Value="SUPPLIER.PhoneNumber" class="form-control" />
+                    <ValidationMessage For="() => SUPPLIER.PhoneNumber" class="text-danger" />
+                </div>
+                <div class="mb-3">
+                    <label for="producttype" class="form-label">ProductType:</label>
+                    <InputText id="producttype" @bind-Value="SUPPLIER.ProductType" class="form-control" />
+                    <ValidationMessage For="() => SUPPLIER.ProductType" class="text-danger" />
+                </div>
+                <button type="submit" class="btn btn-outline-primary">Save</button>
+            </EditForm>
+        </div>
+    </div>
+}
+
+<div>
+    <a href="/suppliers" class="btn btn-outline-secondary">Back to List</a>
+</div>
+
+@code {
+    [SupplyParameterFromQuery]
+    private int SupplierId { get; set; }
+
+    [SupplyParameterFromForm]
+    private SUPPLIER? SUPPLIER { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        using var context = DbFactory.CreateDbContext();
+        SUPPLIER ??= await context.SUPPLIER.FirstOrDefaultAsync(m => m.SupplierId == SupplierId);
+
+        if (SUPPLIER is null)
+        {
+            NavigationManager.NavigateTo("notfound");
+        }
+    }
+
+    // To protect from overposting attacks, enable the specific properties you want to bind to.
+    // For more information, see https://learn.microsoft.com/aspnet/core/blazor/forms/#mitigate-overposting-attacks.
+    private async Task UpdateSUPPLIER()
+    {
+        using var context = DbFactory.CreateDbContext();
+        context.Attach(SUPPLIER!).State = EntityState.Modified;
+
+        try
+        {
+            await context.SaveChangesAsync();
+        }
+        catch (DbUpdateConcurrencyException)
+        {
+            if (!SUPPLIERExists(SUPPLIER!.SupplierId))
+            {
+                NavigationManager.NavigateTo("notfound");
+            }
+            else
+            {
+                throw;
+            }
+        }
+
+        NavigationManager.NavigateTo("/suppliers");
+    }
+
+    private bool SUPPLIERExists(int supplierid)
+    {
+        using var context = DbFactory.CreateDbContext();
+        return context.SUPPLIER.Any(e => e.SupplierId == supplierid);
+    }
+}

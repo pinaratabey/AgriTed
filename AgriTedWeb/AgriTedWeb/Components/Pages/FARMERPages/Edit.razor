@@ -1,0 +1,124 @@
+﻿@page "/farmers/edit"
+@using Microsoft.EntityFrameworkCore
+@using DataAccess
+@inject IDbContextFactory<AgriTedWeb.Data.AgriTedWebContext> DbFactory
+@inject NavigationManager NavigationManager
+
+<PageTitle>Edit</PageTitle>
+
+<h1>Edit</h1>
+
+<h2>FARMER</h2>
+<hr />
+@if (FARMER is null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <div class="row">
+        <div class="col-md-4">
+            <EditForm method="post" Model="FARMER" OnValidSubmit="UpdateFARMER" FormName="edit" Enhance>
+                <DataAnnotationsValidator />
+                <ValidationSummary role="alert"/>
+                <input type="hidden" name="FARMER.FarmerId" value="@FARMER.FarmerId" />
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name:</label>
+                    <InputText id="name" @bind-Value="FARMER.Name" class="form-control" />
+                    <ValidationMessage For="() => FARMER.Name" class="text-danger" />
+                </div>
+                <div class="mb-3">
+                    <label for="age" class="form-label">Age:</label>
+                    <InputNumber id="age" @bind-Value="FARMER.Age" class="form-control" />
+                    <ValidationMessage For="() => FARMER.Age" class="text-danger" />
+                </div>
+                <div class="mb-3">
+                    <label for="phonenumber" class="form-label">PhoneNumber:</label>
+                    <InputText id="phonenumber" @bind-Value="FARMER.PhoneNumber" class="form-control" />
+                    <ValidationMessage For="() => FARMER.PhoneNumber" class="text-danger" />
+                </div>
+                <div class="mb-3">
+                    <label for="address" class="form-label">Address:</label>
+                    <InputText id="address" @bind-Value="FARMER.Address" class="form-control" />
+                    <ValidationMessage For="() => FARMER.Address" class="text-danger" />
+                </div>
+                <div class="mb-3">
+                    <label for="paymentmethod" class="form-label">PaymentMethod:</label>
+                    <InputText id="paymentmethod" @bind-Value="FARMER.PaymentMethod" class="form-control" />
+                    <ValidationMessage For="() => FARMER.PaymentMethod" class="text-danger" />
+                </div>
+                <div class="mb-3">
+                    <label for="experience" class="form-label">Experience:</label>
+                    <InputNumber id="experience" @bind-Value="FARMER.Experience" class="form-control" />
+                    <ValidationMessage For="() => FARMER.Experience" class="text-danger" />
+                </div>
+                <!-- Gender alanı ekledik -->
+                <div class="mb-3">
+                    <label for="gender" class="form-label">Gender:</label>
+                    <InputSelect id="gender" @bind-Value="FARMER.Gender" class="form-control">
+                        <option value="">Select Gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </InputSelect>
+                    <ValidationMessage For="() => FARMER.Gender" class="text-danger" />
+                </div>
+                <button type="submit" class="btn btn-outline-primary">Save</button>
+            </EditForm>
+        </div>
+    </div>
+}
+
+<div>
+    <a href="/farmers" class="btn btn-outline-secondary">Back to List</a>
+</div>
+
+@code {
+    [SupplyParameterFromQuery]
+    private int FarmerId { get; set; }
+
+    [SupplyParameterFromForm]
+    private FARMER? FARMER { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        using var context = DbFactory.CreateDbContext();
+        FARMER ??= await context.FARMER.FirstOrDefaultAsync(m => m.FarmerId == FarmerId);
+
+        if (FARMER is null)
+        {
+            NavigationManager.NavigateTo("notfound");
+        }
+    }
+
+    // To protect from overposting attacks, enable the specific properties you want to bind to.
+    // For more information, see https://learn.microsoft.com/aspnet/core/blazor/forms/#mitigate-overposting-attacks.
+    private async Task UpdateFARMER()
+    {
+        using var context = DbFactory.CreateDbContext();
+        context.Attach(FARMER!).State = EntityState.Modified;
+
+        try
+        {
+            await context.SaveChangesAsync();
+        }
+        catch (DbUpdateConcurrencyException)
+        {
+            if (!FARMERExists(FARMER!.FarmerId))
+            {
+                NavigationManager.NavigateTo("notfound");
+            }
+            else
+            {
+                throw;
+            }
+        }
+
+        NavigationManager.NavigateTo("/farmers");
+    }
+
+    private bool FARMERExists(int farmerid)
+    {
+        using var context = DbFactory.CreateDbContext();
+        return context.FARMER.Any(e => e.FarmerId == farmerid);
+    }
+}

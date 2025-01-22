@@ -1,0 +1,58 @@
+﻿@page "/farmers/details"
+@using Microsoft.EntityFrameworkCore
+@using DataAccess
+@inject IDbContextFactory<AgriTedWeb.Data.AgriTedWebContext> DbFactory
+@inject NavigationManager NavigationManager
+
+<PageTitle>Details</PageTitle>
+
+<h1>Details</h1>
+
+<div>
+    <h2>FARMER</h2>
+    <hr />
+    @if (farmer is null)
+    {
+        <p><em>Loading...</em></p>
+    }
+    else {
+        <dl class="row">
+            <dt class="col-sm-2">Name</dt>
+            <dd class="col-sm-10">@farmer.Name</dd>
+            <dt class="col-sm-2">Age</dt>
+            <dd class="col-sm-10">@farmer.Age</dd>
+            <dt class="col-sm-2">PhoneNumber</dt>
+            <dd class="col-sm-10">@farmer.PhoneNumber</dd>
+            <dt class="col-sm-2">Address</dt>
+            <dd class="col-sm-10">@farmer.Address</dd>
+            <dt class="col-sm-2">PaymentMethod</dt>
+            <dd class="col-sm-10">@farmer.PaymentMethod</dd>
+            <dt class="col-sm-2">Experience</dt>
+            <dd class="col-sm-10">@farmer.Experience</dd>
+            <dt class="col-sm-2">Gender</dt> <!-- Yeni eklenen alan -->
+            <dd class="col-sm-10">@farmer.Gender</dd> <!-- Yeni eklenen alan -->
+        </dl>
+        <div>
+            <a href="@($"/farmers/edit?farmerid={farmer.FarmerId}")" class="btn btn-outline-warning">Edit</a> |
+            <a href="@($"/farmers")" class="btn btn-outline-secondary">Back to List</a>
+        </div>
+    }
+</div>
+
+@code {
+    private FARMER? farmer;
+
+    [SupplyParameterFromQuery]
+    private int FarmerId { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        using var context = DbFactory.CreateDbContext();
+        farmer = await context.FARMER.FirstOrDefaultAsync(m => m.FarmerId == FarmerId);
+
+        if (farmer is null)
+        {
+            NavigationManager.NavigateTo("notfound");
+        }
+    }
+}

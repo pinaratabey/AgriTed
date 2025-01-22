@@ -1,0 +1,50 @@
+﻿@page "/crops/details"
+@using Microsoft.EntityFrameworkCore
+@using DataAccess
+@inject IDbContextFactory<AgriTedWeb.Data.AgriTedWebContext> DbFactory
+@inject NavigationManager NavigationManager
+
+<PageTitle>Details</PageTitle>
+
+<h1>Details</h1>
+
+<div>
+    <h2>CROP</h2>
+    <hr />
+    @if (crop is null)
+    {
+        <p><em>Loading...</em></p>
+    }
+    else {
+        <dl class="row">
+            <dt class="col-sm-2">Type</dt>
+            <dd class="col-sm-10">@crop.Type</dd>
+            <dt class="col-sm-2">AvarageYield</dt>
+            <dd class="col-sm-10">@crop.AvarageYield</dd>
+            <dt class="col-sm-2">Price</dt>
+            <dd class="col-sm-10">@crop.Price</dd>
+        </dl>
+        <div>
+            <a href="@($"/crops/edit?cropid={crop.CropId}")" class="btn btn-outline-warning">Edit</a> |
+            <a href="@($"/crops")" class="btn btn-outline-secondary">Back to List</a>
+        </div>
+    }
+</div>
+
+@code {
+    private CROP? crop;
+
+    [SupplyParameterFromQuery]
+    private int CropId { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        using var context = DbFactory.CreateDbContext();
+        crop = await context.CROP.FirstOrDefaultAsync(m => m.CropId == CropId);
+
+        if (crop is null)
+        {
+            NavigationManager.NavigateTo("notfound");
+        }
+    }
+}

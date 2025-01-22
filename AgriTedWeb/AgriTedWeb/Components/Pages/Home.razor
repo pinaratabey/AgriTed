@@ -1,0 +1,208 @@
+﻿@page "/"
+@using AgriTedWeb.Data
+@using Microsoft.EntityFrameworkCore
+@using Radzen
+@using Radzen.Blazor
+@inject IDbContextFactory<AgriTedWebContext> DbFactory
+
+@rendermode InteractiveServer
+
+<PageTitle>Agrited Dashboard</PageTitle>
+
+<div class="row g-3">
+
+    <!-- Total Price -->
+    <div class="col-md-6">
+        <div class="border border-2 p-1" style="min-height: 300px;">
+            <h3>Total Reservation Prices</h3>
+            @if (totalPriceData != null && totalPriceData.Any())
+            {
+                <RadzenChart ColorScheme="ColorScheme.Monochrome">
+                    <RadzenColumnSeries TItem="ChartData" Fill="cornflowerblue" Title="Reservation Price" Data="@totalPriceData" CategoryProperty="Label" ValueProperty="Value">
+                        <RadzenSeriesDataLabels Visible="true" />
+                    </RadzenColumnSeries>
+                    <RadzenValueAxis>
+                        <RadzenAxisTitle Text="Price (₺)" />
+                    </RadzenValueAxis>
+                    <RadzenCategoryAxis Visible="false">
+                    </RadzenCategoryAxis>
+                </RadzenChart>
+            }
+            else
+            {
+                <RadzenChart ColorScheme="ColorScheme.Monochrome">
+                    <RadzenColumnSeries TItem="ChartData" Fill="cornflowerblue" Title="Reservation Price" Data="[]" CategoryProperty="Label" ValueProperty="Value">
+                        <RadzenSeriesDataLabels Visible="true" />
+                    </RadzenColumnSeries>
+                    <RadzenValueAxis>
+                        <RadzenAxisTitle Text="Price (₺)" />
+                    </RadzenValueAxis>
+                    <RadzenCategoryAxis Visible="false">
+                    </RadzenCategoryAxis>
+                </RadzenChart>
+                <p>No data available for reservation prices.</p>
+            }
+        </div>
+    </div>
+
+
+    
+
+
+    <!-- Yield -->
+    <div class="col-md-6">
+        <div class="border border-2 p-1" style="min-height: 300px;">
+            <h3>Crop Yield</h3>
+            @if (yieldData != null && yieldData.Any())
+            {
+                <RadzenChart ColorScheme="ColorScheme.Palette">
+                    <RadzenColumnSeries Fill="goldenrod" Title="Yield" Data="@yieldData" CategoryProperty="Label" ValueProperty="Value">
+                        <RadzenSeriesDataLabels Visible="true" />
+                    </RadzenColumnSeries>
+                    <RadzenValueAxis>
+                        <RadzenAxisTitle Text="Yield (kg)" />
+                    </RadzenValueAxis>
+                    <RadzenCategoryAxis>
+                        <RadzenAxisTitle Text="Crop Type" />
+                        <RadzenCategoryAxisLabelStyle Rotation="0" FontSize="8px" FontWeight="Bold" TextAlign="Center" />
+                    </RadzenCategoryAxis>
+                </RadzenChart>
+            }
+            else
+            {
+                <p>No data available for crop yield.</p>
+            }
+        </div>
+    </div>
+
+    <!-- Total Reservations -->
+    <div class="col-md-6">
+    <div class="border border-2 p-1" style="min-height: 300px;">
+        <h3>Total Reservations</h3>
+        @if (reservationData != null && reservationData.Any())
+        {
+            <RadzenChart ColorScheme="ColorScheme.Pastel">
+                <RadzenColumnSeries TItem="ChartData" Title="Reservations" Data="@reservationData" CategoryProperty="Label" ValueProperty="Value">
+                    <RadzenSeriesDataLabels Visible="true" />
+                </RadzenColumnSeries>
+                <RadzenValueAxis>
+                    <RadzenAxisTitle Text="Count" />
+                </RadzenValueAxis>
+                <RadzenCategoryAxis>
+                    <RadzenAxisTitle Text="Reservations" />
+                    <RadzenCategoryAxisLabelStyle Rotation="0" FontSize="10px" FontWeight="Bold" />
+                </RadzenCategoryAxis>
+            </RadzenChart>
+        }
+        else
+        {
+            
+            <RadzenChart ColorScheme="ColorScheme.Pastel">
+                <RadzenColumnSeries TItem="ChartData" Title="Reservations" Data="[]" CategoryProperty="Label" ValueProperty="Value">
+                    <RadzenSeriesDataLabels Visible="true" />
+                </RadzenColumnSeries>
+                <RadzenValueAxis>
+                    <RadzenAxisTitle Text="Count" />
+                </RadzenValueAxis>
+                <RadzenCategoryAxis Visible="false">
+                </RadzenCategoryAxis>
+            </RadzenChart>
+            <p>No data available for total reservations.</p>
+        }
+    </div>
+</div>
+
+
+    <!-- Average Age -->
+    <div class="col-md-6">
+        <div class="border border-2 p-1" style="min-height: 300px;">
+            <h3>Average Age of Farmers</h3>
+            @if (averageAgeData != null && averageAgeData.Any())
+            {
+                <RadzenChart ColorScheme="ColorScheme.Pastel">
+                    <RadzenColumnSeries Title="Average Age" Data="@averageAgeData" CategoryProperty="Label" ValueProperty="Value">
+                        <RadzenSeriesDataLabels Visible="true" />
+                    </RadzenColumnSeries>
+                    <RadzenValueAxis>
+                        <RadzenAxisTitle Text="Age" />
+                    </RadzenValueAxis>
+                    <RadzenCategoryAxis>
+                        <RadzenAxisTitle Text="Category" />
+                        <RadzenCategoryAxisLabelStyle Rotation="0" FontSize="10px" FontWeight="Bold" TextAlign="Center" />
+                    </RadzenCategoryAxis>
+                </RadzenChart>
+            }
+            else
+            {
+                <p>No data available for average age of farmers.</p>
+            }
+        </div>
+    </div>
+</div>
+
+@code {
+    private List<ChartData> genderDistribution = new();
+    private List<ChartData> totalPriceData = new();
+    private List<ChartData> yieldData = new();
+    private List<ChartData> reservationData = new();
+    private List<ChartData> averageAgeData = new();
+    private int totalReservations;
+
+    public class ChartData
+    {
+        public string Label { get; set; } = string.Empty;
+        public float Value { get; set; }
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        //Thread.Sleep(3000);
+        using var context = await DbFactory.CreateDbContextAsync();
+
+        try
+        {
+            // Total Price (only from reservations)
+            totalPriceData = await context.RESERVATION
+                .Select(r => new ChartData
+                {
+                    Label = $"Reservation {r.ReservationId}",
+                    Value = (float)r.TotalPrice
+                })
+                .ToListAsync();
+
+            // Yield
+            yieldData = await context.CROP
+                .GroupBy(c => c.Type)
+                .Select(g => new ChartData
+                {
+                    Label = g.Key,
+                    Value = (float)g.Average(c => c.AvarageYield)
+                })
+                .ToListAsync();
+
+            // Total Reservations
+            totalReservations = await context.RESERVATION.CountAsync();
+
+            // Add to reservation chart data
+            reservationData.Add(new ChartData
+            {
+                Label = "Total Reservations",
+                Value = totalReservations
+            });
+
+            // Average Age of Farmers
+            averageAgeData = new List<ChartData>
+            {
+                new ChartData
+                {
+                    Label = "Average Age",
+                    Value = (float)await context.FARMER.AverageAsync(f => f.Age)
+                }
+            };
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading data: {ex.Message}");
+        }
+    }
+}

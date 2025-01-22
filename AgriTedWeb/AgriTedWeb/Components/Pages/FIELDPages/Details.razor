@@ -1,0 +1,50 @@
+﻿@page "/fields/details"
+@using Microsoft.EntityFrameworkCore
+@using DataAccess
+@inject IDbContextFactory<AgriTedWeb.Data.AgriTedWebContext> DbFactory
+@inject NavigationManager NavigationManager
+
+<PageTitle>Details</PageTitle>
+
+<h1>Details</h1>
+
+<div>
+    <h2>FIELD</h2>
+    <hr />
+    @if (field is null)
+    {
+        <p><em>Loading...</em></p>
+    }
+    else {
+        <dl class="row">
+            <dt class="col-sm-2">RentalFee</dt>
+            <dd class="col-sm-10">@field.RentalFee</dd>
+            <dt class="col-sm-2">Name</dt>
+            <dd class="col-sm-10">@field.Name</dd>
+            <dt class="col-sm-2">Size</dt>
+            <dd class="col-sm-10">@field.Size</dd>
+        </dl>
+        <div>
+            <a href="@($"/fields/edit?fieldid={field.FieldId}")" class="btn btn-outline-warning">Edit</a> |
+            <a href="@($"/fields")" class="btn btn-outline-secondary">Back to List</a>
+        </div>
+    }
+</div>
+
+@code {
+    private FIELD? field;
+
+    [SupplyParameterFromQuery]
+    private int FieldId { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        using var context = DbFactory.CreateDbContext();
+        field = await context.FIELD.FirstOrDefaultAsync(m => m.FieldId == FieldId);
+
+        if (field is null)
+        {
+            NavigationManager.NavigateTo("notfound");
+        }
+    }
+}

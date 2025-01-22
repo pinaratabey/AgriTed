@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35521.163
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{2DA5C06C-ADE2-413B-86BE-2CF9A1C588AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgriTedWeb", "AgriTedWeb\AgriTedWeb\AgriTedWeb.csproj", "{9D183854-CD2C-407B-8C71-E2301C9902D1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgriTedWeb.Client", "AgriTedWeb\AgriTedWeb.Client\AgriTedWeb.Client.csproj", "{F5AC3F42-F04E-4B15-8297-BF12E513BEBC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2DA5C06C-ADE2-413B-86BE-2CF9A1C588AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DA5C06C-ADE2-413B-86BE-2CF9A1C588AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DA5C06C-ADE2-413B-86BE-2CF9A1C588AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DA5C06C-ADE2-413B-86BE-2CF9A1C588AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D183854-CD2C-407B-8C71-E2301C9902D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D183854-CD2C-407B-8C71-E2301C9902D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D183854-CD2C-407B-8C71-E2301C9902D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D183854-CD2C-407B-8C71-E2301C9902D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5AC3F42-F04E-4B15-8297-BF12E513BEBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5AC3F42-F04E-4B15-8297-BF12E513BEBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5AC3F42-F04E-4B15-8297-BF12E513BEBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5AC3F42-F04E-4B15-8297-BF12E513BEBC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

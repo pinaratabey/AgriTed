@@ -1,0 +1,752 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="AGRITEDPXModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CROP">
+          <Key>
+            <PropertyRef Name="CropId" />
+          </Key>
+          <Property Name="CropId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="AvarageYield" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Price" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CROPFERTILIZER">
+          <Key>
+            <PropertyRef Name="CropId" />
+            <PropertyRef Name="FertilizerId" />
+          </Key>
+          <Property Name="CropId" Type="int" Nullable="false" />
+          <Property Name="FertilizerId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CROPSUPPLIER">
+          <Key>
+            <PropertyRef Name="CropId" />
+            <PropertyRef Name="SupplierId" />
+          </Key>
+          <Property Name="CropId" Type="int" Nullable="false" />
+          <Property Name="SupplierId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EQUIPMENT">
+          <Key>
+            <PropertyRef Name="EquipmentId" />
+          </Key>
+          <Property Name="EquipmentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="varchar" MaxLength="50" />
+          <Property Name="Price" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FARMER">
+          <Key>
+            <PropertyRef Name="FarmerId" />
+          </Key>
+          <Property Name="FarmerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Age" Type="int" Nullable="false" />
+          <Property Name="PhoneNumber" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="Address" Type="text" />
+          <Property Name="PaymentMethod" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Experience" Type="int" />
+        </EntityType>
+        <EntityType Name="FERTILIZER">
+          <Key>
+            <PropertyRef Name="FertilizerId" />
+          </Key>
+          <Property Name="FertilizerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Amount" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FERTILIZERSUPPLIER">
+          <Key>
+            <PropertyRef Name="FertilizerId" />
+            <PropertyRef Name="SupplierId" />
+          </Key>
+          <Property Name="FertilizerId" Type="int" Nullable="false" />
+          <Property Name="SupplierId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FIELD">
+          <Key>
+            <PropertyRef Name="FieldId" />
+          </Key>
+          <Property Name="FieldId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RentalFee" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Size" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="QUALITY">
+          <Key>
+            <PropertyRef Name="QualityId" />
+            <PropertyRef Name="FertilizerId" />
+          </Key>
+          <Property Name="QualityId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FertilizerId" Type="int" Nullable="false" />
+          <Property Name="QualityDescription" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="RESERVATION">
+          <Key>
+            <PropertyRef Name="ReservationId" />
+          </Key>
+          <Property Name="ReservationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FieldId" Type="int" />
+          <Property Name="FarmerId" Type="int" />
+          <Property Name="CropId" Type="int" />
+          <Property Name="EquipmentId" Type="int" />
+          <Property Name="FertilizerId" Type="int" />
+          <Property Name="TotalPrice" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="StartDate" Type="date" Nullable="false" />
+          <Property Name="EndDate" Type="date" Nullable="false" />
+          <Property Name="Status" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SUPPLIER">
+          <Key>
+            <PropertyRef Name="SupplierId" />
+          </Key>
+          <Property Name="SupplierId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="CompanyName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PhoneNumber" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="ProductType" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="USEDFOR">
+          <Key>
+            <PropertyRef Name="EquipmentId" />
+            <PropertyRef Name="CropId" />
+          </Key>
+          <Property Name="EquipmentId" Type="int" Nullable="false" />
+          <Property Name="CropId" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__CROPFERTI__CropI__5629CD9C">
+          <End Role="CROP" Type="Self.CROP" Multiplicity="1" />
+          <End Role="CROPFERTILIZER" Type="Self.CROPFERTILIZER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CROP">
+              <PropertyRef Name="CropId" />
+            </Principal>
+            <Dependent Role="CROPFERTILIZER">
+              <PropertyRef Name="CropId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CROPFERTI__Ferti__571DF1D5">
+          <End Role="FERTILIZER" Type="Self.FERTILIZER" Multiplicity="1" />
+          <End Role="CROPFERTILIZER" Type="Self.CROPFERTILIZER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FERTILIZER">
+              <PropertyRef Name="FertilizerId" />
+            </Principal>
+            <Dependent Role="CROPFERTILIZER">
+              <PropertyRef Name="FertilizerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CROPSUPPL__CropI__52593CB8">
+          <End Role="CROP" Type="Self.CROP" Multiplicity="1" />
+          <End Role="CROPSUPPLIER" Type="Self.CROPSUPPLIER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CROP">
+              <PropertyRef Name="CropId" />
+            </Principal>
+            <Dependent Role="CROPSUPPLIER">
+              <PropertyRef Name="CropId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CROPSUPPL__Suppl__534D60F1">
+          <End Role="SUPPLIER" Type="Self.SUPPLIER" Multiplicity="1" />
+          <End Role="CROPSUPPLIER" Type="Self.CROPSUPPLIER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SUPPLIER">
+              <PropertyRef Name="SupplierId" />
+            </Principal>
+            <Dependent Role="CROPSUPPLIER">
+              <PropertyRef Name="SupplierId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FERTILIZE__Ferti__4E88ABD4">
+          <End Role="FERTILIZER" Type="Self.FERTILIZER" Multiplicity="1" />
+          <End Role="FERTILIZERSUPPLIER" Type="Self.FERTILIZERSUPPLIER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FERTILIZER">
+              <PropertyRef Name="FertilizerId" />
+            </Principal>
+            <Dependent Role="FERTILIZERSUPPLIER">
+              <PropertyRef Name="FertilizerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FERTILIZE__Suppl__4F7CD00D">
+          <End Role="SUPPLIER" Type="Self.SUPPLIER" Multiplicity="1" />
+          <End Role="FERTILIZERSUPPLIER" Type="Self.FERTILIZERSUPPLIER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SUPPLIER">
+              <PropertyRef Name="SupplierId" />
+            </Principal>
+            <Dependent Role="FERTILIZERSUPPLIER">
+              <PropertyRef Name="SupplierId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__QUALITY__Fertili__59FA5E80">
+          <End Role="FERTILIZER" Type="Self.FERTILIZER" Multiplicity="1" />
+          <End Role="QUALITY" Type="Self.QUALITY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FERTILIZER">
+              <PropertyRef Name="FertilizerId" />
+            </Principal>
+            <Dependent Role="QUALITY">
+              <PropertyRef Name="FertilizerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RESERVATI__CropI__45F365D3">
+          <End Role="CROP" Type="Self.CROP" Multiplicity="0..1" />
+          <End Role="RESERVATION" Type="Self.RESERVATION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CROP">
+              <PropertyRef Name="CropId" />
+            </Principal>
+            <Dependent Role="RESERVATION">
+              <PropertyRef Name="CropId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RESERVATI__Equip__46E78A0C">
+          <End Role="EQUIPMENT" Type="Self.EQUIPMENT" Multiplicity="0..1" />
+          <End Role="RESERVATION" Type="Self.RESERVATION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EQUIPMENT">
+              <PropertyRef Name="EquipmentId" />
+            </Principal>
+            <Dependent Role="RESERVATION">
+              <PropertyRef Name="EquipmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RESERVATI__Farme__44FF419A">
+          <End Role="FARMER" Type="Self.FARMER" Multiplicity="0..1" />
+          <End Role="RESERVATION" Type="Self.RESERVATION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FARMER">
+              <PropertyRef Name="FarmerId" />
+            </Principal>
+            <Dependent Role="RESERVATION">
+              <PropertyRef Name="FarmerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RESERVATI__Ferti__47DBAE45">
+          <End Role="FERTILIZER" Type="Self.FERTILIZER" Multiplicity="0..1" />
+          <End Role="RESERVATION" Type="Self.RESERVATION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FERTILIZER">
+              <PropertyRef Name="FertilizerId" />
+            </Principal>
+            <Dependent Role="RESERVATION">
+              <PropertyRef Name="FertilizerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RESERVATI__Field__440B1D61">
+          <End Role="FIELD" Type="Self.FIELD" Multiplicity="0..1" />
+          <End Role="RESERVATION" Type="Self.RESERVATION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FIELD">
+              <PropertyRef Name="FieldId" />
+            </Principal>
+            <Dependent Role="RESERVATION">
+              <PropertyRef Name="FieldId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__USEDFOR__CropId__4BAC3F29">
+          <End Role="CROP" Type="Self.CROP" Multiplicity="1" />
+          <End Role="USEDFOR" Type="Self.USEDFOR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CROP">
+              <PropertyRef Name="CropId" />
+            </Principal>
+            <Dependent Role="USEDFOR">
+              <PropertyRef Name="CropId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__USEDFOR__Equipme__4AB81AF0">
+          <End Role="EQUIPMENT" Type="Self.EQUIPMENT" Multiplicity="1" />
+          <End Role="USEDFOR" Type="Self.USEDFOR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EQUIPMENT">
+              <PropertyRef Name="EquipmentId" />
+            </Principal>
+            <Dependent Role="USEDFOR">
+              <PropertyRef Name="EquipmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AGRITEDPXModelStoreContainer">
+          <EntitySet Name="CROP" EntityType="Self.CROP" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CROPFERTILIZER" EntityType="Self.CROPFERTILIZER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CROPSUPPLIER" EntityType="Self.CROPSUPPLIER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EQUIPMENT" EntityType="Self.EQUIPMENT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FARMER" EntityType="Self.FARMER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FERTILIZER" EntityType="Self.FERTILIZER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FERTILIZERSUPPLIER" EntityType="Self.FERTILIZERSUPPLIER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FIELD" EntityType="Self.FIELD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QUALITY" EntityType="Self.QUALITY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RESERVATION" EntityType="Self.RESERVATION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SUPPLIER" EntityType="Self.SUPPLIER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USEDFOR" EntityType="Self.USEDFOR" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__CROPFERTI__CropI__5629CD9C" Association="Self.FK__CROPFERTI__CropI__5629CD9C">
+            <End Role="CROP" EntitySet="CROP" />
+            <End Role="CROPFERTILIZER" EntitySet="CROPFERTILIZER" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CROPFERTI__Ferti__571DF1D5" Association="Self.FK__CROPFERTI__Ferti__571DF1D5">
+            <End Role="FERTILIZER" EntitySet="FERTILIZER" />
+            <End Role="CROPFERTILIZER" EntitySet="CROPFERTILIZER" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CROPSUPPL__CropI__52593CB8" Association="Self.FK__CROPSUPPL__CropI__52593CB8">
+            <End Role="CROP" EntitySet="CROP" />
+            <End Role="CROPSUPPLIER" EntitySet="CROPSUPPLIER" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CROPSUPPL__Suppl__534D60F1" Association="Self.FK__CROPSUPPL__Suppl__534D60F1">
+            <End Role="SUPPLIER" EntitySet="SUPPLIER" />
+            <End Role="CROPSUPPLIER" EntitySet="CROPSUPPLIER" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FERTILIZE__Ferti__4E88ABD4" Association="Self.FK__FERTILIZE__Ferti__4E88ABD4">
+            <End Role="FERTILIZER" EntitySet="FERTILIZER" />
+            <End Role="FERTILIZERSUPPLIER" EntitySet="FERTILIZERSUPPLIER" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FERTILIZE__Suppl__4F7CD00D" Association="Self.FK__FERTILIZE__Suppl__4F7CD00D">
+            <End Role="SUPPLIER" EntitySet="SUPPLIER" />
+            <End Role="FERTILIZERSUPPLIER" EntitySet="FERTILIZERSUPPLIER" />
+          </AssociationSet>
+          <AssociationSet Name="FK__QUALITY__Fertili__59FA5E80" Association="Self.FK__QUALITY__Fertili__59FA5E80">
+            <End Role="FERTILIZER" EntitySet="FERTILIZER" />
+            <End Role="QUALITY" EntitySet="QUALITY" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RESERVATI__CropI__45F365D3" Association="Self.FK__RESERVATI__CropI__45F365D3">
+            <End Role="CROP" EntitySet="CROP" />
+            <End Role="RESERVATION" EntitySet="RESERVATION" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RESERVATI__Equip__46E78A0C" Association="Self.FK__RESERVATI__Equip__46E78A0C">
+            <End Role="EQUIPMENT" EntitySet="EQUIPMENT" />
+            <End Role="RESERVATION" EntitySet="RESERVATION" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RESERVATI__Farme__44FF419A" Association="Self.FK__RESERVATI__Farme__44FF419A">
+            <End Role="FARMER" EntitySet="FARMER" />
+            <End Role="RESERVATION" EntitySet="RESERVATION" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RESERVATI__Ferti__47DBAE45" Association="Self.FK__RESERVATI__Ferti__47DBAE45">
+            <End Role="FERTILIZER" EntitySet="FERTILIZER" />
+            <End Role="RESERVATION" EntitySet="RESERVATION" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RESERVATI__Field__440B1D61" Association="Self.FK__RESERVATI__Field__440B1D61">
+            <End Role="FIELD" EntitySet="FIELD" />
+            <End Role="RESERVATION" EntitySet="RESERVATION" />
+          </AssociationSet>
+          <AssociationSet Name="FK__USEDFOR__CropId__4BAC3F29" Association="Self.FK__USEDFOR__CropId__4BAC3F29">
+            <End Role="CROP" EntitySet="CROP" />
+            <End Role="USEDFOR" EntitySet="USEDFOR" />
+          </AssociationSet>
+          <AssociationSet Name="FK__USEDFOR__Equipme__4AB81AF0" Association="Self.FK__USEDFOR__Equipme__4AB81AF0">
+            <End Role="EQUIPMENT" EntitySet="EQUIPMENT" />
+            <End Role="USEDFOR" EntitySet="USEDFOR" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AGRITEDPXModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CROP">
+          <Key>
+            <PropertyRef Name="CropId" />
+          </Key>
+          <Property Name="CropId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AvarageYield" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Price" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <NavigationProperty Name="RESERVATION" Relationship="Self.FK__RESERVATI__CropI__45F365D3" FromRole="CROP" ToRole="RESERVATION" />
+          <NavigationProperty Name="FERTILIZER" Relationship="Self.CROPFERTILIZER" FromRole="CROP" ToRole="FERTILIZER" />
+          <NavigationProperty Name="SUPPLIER" Relationship="Self.CROPSUPPLIER" FromRole="CROP" ToRole="SUPPLIER" />
+          <NavigationProperty Name="EQUIPMENT" Relationship="Self.USEDFOR" FromRole="CROP" ToRole="EQUIPMENT" />
+        </EntityType>
+        <EntityType Name="EQUIPMENT">
+          <Key>
+            <PropertyRef Name="EquipmentId" />
+          </Key>
+          <Property Name="EquipmentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Price" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <NavigationProperty Name="RESERVATION" Relationship="Self.FK__RESERVATI__Equip__46E78A0C" FromRole="EQUIPMENT" ToRole="RESERVATION" />
+          <NavigationProperty Name="CROP" Relationship="Self.USEDFOR" FromRole="EQUIPMENT" ToRole="CROP" />
+        </EntityType>
+        <EntityType Name="FARMER">
+          <Key>
+            <PropertyRef Name="FarmerId" />
+          </Key>
+          <Property Name="FarmerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Age" Type="Int32" Nullable="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PaymentMethod" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Experience" Type="Int32" />
+          <NavigationProperty Name="RESERVATION" Relationship="Self.FK__RESERVATI__Farme__44FF419A" FromRole="FARMER" ToRole="RESERVATION" />
+        </EntityType>
+        <EntityType Name="FERTILIZER">
+          <Key>
+            <PropertyRef Name="FertilizerId" />
+          </Key>
+          <Property Name="FertilizerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Amount" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <NavigationProperty Name="QUALITY" Relationship="Self.FK__QUALITY__Fertili__59FA5E80" FromRole="FERTILIZER" ToRole="QUALITY" />
+          <NavigationProperty Name="RESERVATION" Relationship="Self.FK__RESERVATI__Ferti__47DBAE45" FromRole="FERTILIZER" ToRole="RESERVATION" />
+          <NavigationProperty Name="CROP" Relationship="Self.CROPFERTILIZER" FromRole="FERTILIZER" ToRole="CROP" />
+          <NavigationProperty Name="SUPPLIER" Relationship="Self.FERTILIZERSUPPLIER" FromRole="FERTILIZER" ToRole="SUPPLIER" />
+        </EntityType>
+        <EntityType Name="FIELD">
+          <Key>
+            <PropertyRef Name="FieldId" />
+          </Key>
+          <Property Name="FieldId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RentalFee" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Size" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <NavigationProperty Name="RESERVATION" Relationship="Self.FK__RESERVATI__Field__440B1D61" FromRole="FIELD" ToRole="RESERVATION" />
+        </EntityType>
+        <EntityType Name="QUALITY">
+          <Key>
+            <PropertyRef Name="QualityId" />
+            <PropertyRef Name="FertilizerId" />
+          </Key>
+          <Property Name="QualityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FertilizerId" Type="Int32" Nullable="false" />
+          <Property Name="QualityDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="FERTILIZER" Relationship="Self.FK__QUALITY__Fertili__59FA5E80" FromRole="QUALITY" ToRole="FERTILIZER" />
+        </EntityType>
+        <EntityType Name="RESERVATION">
+          <Key>
+            <PropertyRef Name="ReservationId" />
+          </Key>
+          <Property Name="ReservationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FieldId" Type="Int32" />
+          <Property Name="FarmerId" Type="Int32" />
+          <Property Name="CropId" Type="Int32" />
+          <Property Name="EquipmentId" Type="Int32" />
+          <Property Name="FertilizerId" Type="Int32" />
+          <Property Name="TotalPrice" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="CROP" Relationship="Self.FK__RESERVATI__CropI__45F365D3" FromRole="RESERVATION" ToRole="CROP" />
+          <NavigationProperty Name="EQUIPMENT" Relationship="Self.FK__RESERVATI__Equip__46E78A0C" FromRole="RESERVATION" ToRole="EQUIPMENT" />
+          <NavigationProperty Name="FARMER" Relationship="Self.FK__RESERVATI__Farme__44FF419A" FromRole="RESERVATION" ToRole="FARMER" />
+          <NavigationProperty Name="FERTILIZER" Relationship="Self.FK__RESERVATI__Ferti__47DBAE45" FromRole="RESERVATION" ToRole="FERTILIZER" />
+          <NavigationProperty Name="FIELD" Relationship="Self.FK__RESERVATI__Field__440B1D61" FromRole="RESERVATION" ToRole="FIELD" />
+        </EntityType>
+        <EntityType Name="SUPPLIER">
+          <Key>
+            <PropertyRef Name="SupplierId" />
+          </Key>
+          <Property Name="SupplierId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CompanyName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ProductType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="CROP" Relationship="Self.CROPSUPPLIER" FromRole="SUPPLIER" ToRole="CROP" />
+          <NavigationProperty Name="FERTILIZER" Relationship="Self.FERTILIZERSUPPLIER" FromRole="SUPPLIER" ToRole="FERTILIZER" />
+        </EntityType>
+        <Association Name="FK__RESERVATI__CropI__45F365D3">
+          <End Role="CROP" Type="Self.CROP" Multiplicity="0..1" />
+          <End Role="RESERVATION" Type="Self.RESERVATION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CROP">
+              <PropertyRef Name="CropId" />
+            </Principal>
+            <Dependent Role="RESERVATION">
+              <PropertyRef Name="CropId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RESERVATI__Equip__46E78A0C">
+          <End Role="EQUIPMENT" Type="Self.EQUIPMENT" Multiplicity="0..1" />
+          <End Role="RESERVATION" Type="Self.RESERVATION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EQUIPMENT">
+              <PropertyRef Name="EquipmentId" />
+            </Principal>
+            <Dependent Role="RESERVATION">
+              <PropertyRef Name="EquipmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RESERVATI__Farme__44FF419A">
+          <End Role="FARMER" Type="Self.FARMER" Multiplicity="0..1" />
+          <End Role="RESERVATION" Type="Self.RESERVATION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FARMER">
+              <PropertyRef Name="FarmerId" />
+            </Principal>
+            <Dependent Role="RESERVATION">
+              <PropertyRef Name="FarmerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__QUALITY__Fertili__59FA5E80">
+          <End Role="FERTILIZER" Type="Self.FERTILIZER" Multiplicity="1" />
+          <End Role="QUALITY" Type="Self.QUALITY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FERTILIZER">
+              <PropertyRef Name="FertilizerId" />
+            </Principal>
+            <Dependent Role="QUALITY">
+              <PropertyRef Name="FertilizerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RESERVATI__Ferti__47DBAE45">
+          <End Role="FERTILIZER" Type="Self.FERTILIZER" Multiplicity="0..1" />
+          <End Role="RESERVATION" Type="Self.RESERVATION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FERTILIZER">
+              <PropertyRef Name="FertilizerId" />
+            </Principal>
+            <Dependent Role="RESERVATION">
+              <PropertyRef Name="FertilizerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RESERVATI__Field__440B1D61">
+          <End Role="FIELD" Type="Self.FIELD" Multiplicity="0..1" />
+          <End Role="RESERVATION" Type="Self.RESERVATION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FIELD">
+              <PropertyRef Name="FieldId" />
+            </Principal>
+            <Dependent Role="RESERVATION">
+              <PropertyRef Name="FieldId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CROPFERTILIZER">
+          <End Role="CROP" Type="Self.CROP" Multiplicity="*" />
+          <End Role="FERTILIZER" Type="Self.FERTILIZER" Multiplicity="*" />
+        </Association>
+        <Association Name="CROPSUPPLIER">
+          <End Role="CROP" Type="Self.CROP" Multiplicity="*" />
+          <End Role="SUPPLIER" Type="Self.SUPPLIER" Multiplicity="*" />
+        </Association>
+        <Association Name="FERTILIZERSUPPLIER">
+          <End Role="FERTILIZER" Type="Self.FERTILIZER" Multiplicity="*" />
+          <End Role="SUPPLIER" Type="Self.SUPPLIER" Multiplicity="*" />
+        </Association>
+        <Association Name="USEDFOR">
+          <End Role="CROP" Type="Self.CROP" Multiplicity="*" />
+          <End Role="EQUIPMENT" Type="Self.EQUIPMENT" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="AGRITEDPXEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CROP" EntityType="Self.CROP" />
+          <EntitySet Name="EQUIPMENT" EntityType="Self.EQUIPMENT" />
+          <EntitySet Name="FARMER" EntityType="Self.FARMER" />
+          <EntitySet Name="FERTILIZER" EntityType="Self.FERTILIZER" />
+          <EntitySet Name="FIELD" EntityType="Self.FIELD" />
+          <EntitySet Name="QUALITY" EntityType="Self.QUALITY" />
+          <EntitySet Name="RESERVATION" EntityType="Self.RESERVATION" />
+          <EntitySet Name="SUPPLIER" EntityType="Self.SUPPLIER" />
+          <AssociationSet Name="FK__RESERVATI__CropI__45F365D3" Association="Self.FK__RESERVATI__CropI__45F365D3">
+            <End Role="CROP" EntitySet="CROP" />
+            <End Role="RESERVATION" EntitySet="RESERVATION" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RESERVATI__Equip__46E78A0C" Association="Self.FK__RESERVATI__Equip__46E78A0C">
+            <End Role="EQUIPMENT" EntitySet="EQUIPMENT" />
+            <End Role="RESERVATION" EntitySet="RESERVATION" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RESERVATI__Farme__44FF419A" Association="Self.FK__RESERVATI__Farme__44FF419A">
+            <End Role="FARMER" EntitySet="FARMER" />
+            <End Role="RESERVATION" EntitySet="RESERVATION" />
+          </AssociationSet>
+          <AssociationSet Name="FK__QUALITY__Fertili__59FA5E80" Association="Self.FK__QUALITY__Fertili__59FA5E80">
+            <End Role="FERTILIZER" EntitySet="FERTILIZER" />
+            <End Role="QUALITY" EntitySet="QUALITY" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RESERVATI__Ferti__47DBAE45" Association="Self.FK__RESERVATI__Ferti__47DBAE45">
+            <End Role="FERTILIZER" EntitySet="FERTILIZER" />
+            <End Role="RESERVATION" EntitySet="RESERVATION" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RESERVATI__Field__440B1D61" Association="Self.FK__RESERVATI__Field__440B1D61">
+            <End Role="FIELD" EntitySet="FIELD" />
+            <End Role="RESERVATION" EntitySet="RESERVATION" />
+          </AssociationSet>
+          <AssociationSet Name="CROPFERTILIZER" Association="Self.CROPFERTILIZER">
+            <End Role="CROP" EntitySet="CROP" />
+            <End Role="FERTILIZER" EntitySet="FERTILIZER" />
+          </AssociationSet>
+          <AssociationSet Name="CROPSUPPLIER" Association="Self.CROPSUPPLIER">
+            <End Role="CROP" EntitySet="CROP" />
+            <End Role="SUPPLIER" EntitySet="SUPPLIER" />
+          </AssociationSet>
+          <AssociationSet Name="FERTILIZERSUPPLIER" Association="Self.FERTILIZERSUPPLIER">
+            <End Role="FERTILIZER" EntitySet="FERTILIZER" />
+            <End Role="SUPPLIER" EntitySet="SUPPLIER" />
+          </AssociationSet>
+          <AssociationSet Name="USEDFOR" Association="Self.USEDFOR">
+            <End Role="CROP" EntitySet="CROP" />
+            <End Role="EQUIPMENT" EntitySet="EQUIPMENT" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AGRITEDPXModelStoreContainer" CdmEntityContainer="AGRITEDPXEntities">
+          <EntitySetMapping Name="CROP">
+            <EntityTypeMapping TypeName="AGRITEDPXModel.CROP">
+              <MappingFragment StoreEntitySet="CROP">
+                <ScalarProperty Name="CropId" ColumnName="CropId" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="AvarageYield" ColumnName="AvarageYield" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EQUIPMENT">
+            <EntityTypeMapping TypeName="AGRITEDPXModel.EQUIPMENT">
+              <MappingFragment StoreEntitySet="EQUIPMENT">
+                <ScalarProperty Name="EquipmentId" ColumnName="EquipmentId" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FARMER">
+            <EntityTypeMapping TypeName="AGRITEDPXModel.FARMER">
+              <MappingFragment StoreEntitySet="FARMER">
+                <ScalarProperty Name="FarmerId" ColumnName="FarmerId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="PaymentMethod" ColumnName="PaymentMethod" />
+                <ScalarProperty Name="Experience" ColumnName="Experience" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FERTILIZER">
+            <EntityTypeMapping TypeName="AGRITEDPXModel.FERTILIZER">
+              <MappingFragment StoreEntitySet="FERTILIZER">
+                <ScalarProperty Name="FertilizerId" ColumnName="FertilizerId" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FIELD">
+            <EntityTypeMapping TypeName="AGRITEDPXModel.FIELD">
+              <MappingFragment StoreEntitySet="FIELD">
+                <ScalarProperty Name="FieldId" ColumnName="FieldId" />
+                <ScalarProperty Name="RentalFee" ColumnName="RentalFee" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Size" ColumnName="Size" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QUALITY">
+            <EntityTypeMapping TypeName="AGRITEDPXModel.QUALITY">
+              <MappingFragment StoreEntitySet="QUALITY">
+                <ScalarProperty Name="QualityId" ColumnName="QualityId" />
+                <ScalarProperty Name="FertilizerId" ColumnName="FertilizerId" />
+                <ScalarProperty Name="QualityDescription" ColumnName="QualityDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RESERVATION">
+            <EntityTypeMapping TypeName="AGRITEDPXModel.RESERVATION">
+              <MappingFragment StoreEntitySet="RESERVATION">
+                <ScalarProperty Name="ReservationId" ColumnName="ReservationId" />
+                <ScalarProperty Name="FieldId" ColumnName="FieldId" />
+                <ScalarProperty Name="FarmerId" ColumnName="FarmerId" />
+                <ScalarProperty Name="CropId" ColumnName="CropId" />
+                <ScalarProperty Name="EquipmentId" ColumnName="EquipmentId" />
+                <ScalarProperty Name="FertilizerId" ColumnName="FertilizerId" />
+                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SUPPLIER">
+            <EntityTypeMapping TypeName="AGRITEDPXModel.SUPPLIER">
+              <MappingFragment StoreEntitySet="SUPPLIER">
+                <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="ProductType" ColumnName="ProductType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="CROPFERTILIZER" TypeName="AGRITEDPXModel.CROPFERTILIZER" StoreEntitySet="CROPFERTILIZER">
+            <EndProperty Name="CROP">
+              <ScalarProperty Name="CropId" ColumnName="CropId" />
+            </EndProperty>
+            <EndProperty Name="FERTILIZER">
+              <ScalarProperty Name="FertilizerId" ColumnName="FertilizerId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="CROPSUPPLIER" TypeName="AGRITEDPXModel.CROPSUPPLIER" StoreEntitySet="CROPSUPPLIER">
+            <EndProperty Name="CROP">
+              <ScalarProperty Name="CropId" ColumnName="CropId" />
+            </EndProperty>
+            <EndProperty Name="SUPPLIER">
+              <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FERTILIZERSUPPLIER" TypeName="AGRITEDPXModel.FERTILIZERSUPPLIER" StoreEntitySet="FERTILIZERSUPPLIER">
+            <EndProperty Name="FERTILIZER">
+              <ScalarProperty Name="FertilizerId" ColumnName="FertilizerId" />
+            </EndProperty>
+            <EndProperty Name="SUPPLIER">
+              <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="USEDFOR" TypeName="AGRITEDPXModel.USEDFOR" StoreEntitySet="USEDFOR">
+            <EndProperty Name="CROP">
+              <ScalarProperty Name="CropId" ColumnName="CropId" />
+            </EndProperty>
+            <EndProperty Name="EQUIPMENT">
+              <ScalarProperty Name="EquipmentId" ColumnName="EquipmentId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

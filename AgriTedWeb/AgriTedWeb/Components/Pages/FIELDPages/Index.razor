@@ -1,0 +1,38 @@
+﻿@page "/fields"
+@using Microsoft.EntityFrameworkCore
+@using Microsoft.AspNetCore.Components.QuickGrid
+@using DataAccess
+@using AgriTedWeb.Data
+@implements IAsyncDisposable
+@inject IDbContextFactory<AgriTedWeb.Data.AgriTedWebContext> DbFactory
+
+<PageTitle>Index</PageTitle>
+
+<h1>Index</h1>
+
+<p>
+    <a href="fields/create" class="btn btn-outline-success">Create New</a>
+</p>
+
+<QuickGrid Class="table" Items="context.FIELD">
+    <PropertyColumn Title="Rental Fee" Property="field => field.RentalFee" />
+    <PropertyColumn Title="Name" Property="field => field.Name" />
+    <PropertyColumn Title="Size (m2)" Property="field => field.Size" />
+
+    <TemplateColumn Context="field">
+        <a href="@($"fields/edit?fieldid={field.FieldId}")" class="btn btn-outline-warning">Edit</a> |
+        <a href="@($"fields/details?fieldid={field.FieldId}")" class="btn btn-outline-info">Details</a> |
+        <a href="@($"fields/delete?fieldid={field.FieldId}")" class="btn btn-outline-danger">Delete</a>
+    </TemplateColumn>
+</QuickGrid>
+
+@code {
+    private AgriTedWebContext context = default!;
+
+    protected override void OnInitialized()
+    {
+        context = DbFactory.CreateDbContext();
+    }
+
+    public async ValueTask DisposeAsync() => await context.DisposeAsync();
+}

@@ -1,0 +1,79 @@
+﻿@page "/reservations/details"
+@using Microsoft.EntityFrameworkCore
+@using DataAccess
+@inject IDbContextFactory<AgriTedWeb.Data.AgriTedWebContext> DbFactory
+@inject NavigationManager NavigationManager
+
+<PageTitle>Details</PageTitle>
+
+<h1>Details</h1>
+
+<div>
+    <h2>RESERVATION</h2>
+    <hr />
+    @if (reservation is null)
+    {
+        <p><em>Loading...</em></p>
+    }
+    else
+    {
+        <dl class="row">
+            <dt class="col-sm-2">Field</dt>
+            <dd class="col-sm-10">@reservation.FIELD?.Name</dd>
+
+            <dt class="col-sm-2">Farmer</dt>
+            <dd class="col-sm-10">@reservation.FARMER?.Name</dd>
+
+            <dt class="col-sm-2">Crop</dt>
+            <dd class="col-sm-10">@reservation.CROP?.Type</dd>
+
+            <dt class="col-sm-2">Equipment</dt>
+            <dd class="col-sm-10">@reservation.EQUIPMENT?.Type</dd>
+
+            <dt class="col-sm-2">Fertilizer</dt>
+            <dd class="col-sm-10">@reservation.FERTILIZER?.Type</dd>
+
+            <dt class="col-sm-2">Total Price</dt>
+            <dd class="col-sm-10">@reservation.TotalPrice</dd>
+
+            <dt class="col-sm-2">Start Date</dt>
+            <dd class="col-sm-10">@reservation.StartDate.ToShortDateString()</dd>
+
+            <dt class="col-sm-2">End Date</dt>
+            <dd class="col-sm-10">@reservation.EndDate.ToShortDateString()</dd>
+
+            <dt class="col-sm-2">Status</dt>
+            <dd class="col-sm-10">@reservation.Status</dd>
+        </dl>
+        <div>
+            <a href="@($"/reservations/edit?reservationid={reservation.ReservationId}")" class="btn btn-outline-warning">Edit</a> |
+            <a href="/reservations" class="btn btn-outline-secondary">Back to List</a>
+        </div>
+    }
+</div>
+
+@code {
+    private RESERVATION? reservation;
+
+    [SupplyParameterFromQuery]
+    private int ReservationId { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        using var context = DbFactory.CreateDbContext();
+
+        // Eagerly load related entities to fetch their details
+        reservation = await context.RESERVATION
+            .Include(r => r.FIELD)
+            .Include(r => r.FARMER)
+            .Include(r => r.CROP)
+            .Include(r => r.EQUIPMENT)
+            .Include(r => r.FERTILIZER)
+            .FirstOrDefaultAsync(r => r.ReservationId == ReservationId);
+
+        if (reservation is null)
+        {
+            NavigationManager.NavigateTo("notfound");
+        }
+    }
+}

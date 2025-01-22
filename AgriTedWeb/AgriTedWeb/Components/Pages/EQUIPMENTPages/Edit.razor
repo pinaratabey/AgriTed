@@ -1,0 +1,94 @@
+﻿@page "/equipments/edit"
+@using Microsoft.EntityFrameworkCore
+@using DataAccess
+@inject IDbContextFactory<AgriTedWeb.Data.AgriTedWebContext> DbFactory
+@inject NavigationManager NavigationManager
+
+<PageTitle>Edit</PageTitle>
+
+<h1>Edit</h1>
+
+<h2>EQUIPMENT</h2>
+<hr />
+@if (EQUIPMENT is null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <div class="row">
+        <div class="col-md-4">
+            <EditForm method="post" Model="EQUIPMENT" OnValidSubmit="UpdateEQUIPMENT" FormName="edit" Enhance>
+                <DataAnnotationsValidator />
+                <ValidationSummary role="alert"/>
+                <input type="hidden" name="EQUIPMENT.EquipmentId" value="@EQUIPMENT.EquipmentId" />
+                <div class="mb-3">
+                    <label for="type" class="form-label">Type:</label>
+                    <InputText id="type" @bind-Value="EQUIPMENT.Type" class="form-control" />
+                    <ValidationMessage For="() => EQUIPMENT.Type" class="text-danger" />
+                </div>
+                <div class="mb-3">
+                    <label for="price" class="form-label">Price:</label>
+                    <InputNumber id="price" @bind-Value="EQUIPMENT.Price" class="form-control" />
+                    <ValidationMessage For="() => EQUIPMENT.Price" class="text-danger" />
+                </div>
+                <button type="submit" class="btn btn-outline-primary">Save</button>
+            </EditForm>
+        </div>
+    </div>
+}
+
+<div>
+    <a href="/equipments" class="btn btn-outline-secondary">Back to List</a>
+</div>
+
+@code {
+    [SupplyParameterFromQuery]
+    private int EquipmentId { get; set; }
+
+    [SupplyParameterFromForm]
+    private EQUIPMENT? EQUIPMENT { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        using var context = DbFactory.CreateDbContext();
+        EQUIPMENT ??= await context.EQUIPMENT.FirstOrDefaultAsync(m => m.EquipmentId == EquipmentId);
+
+        if (EQUIPMENT is null)
+        {
+            NavigationManager.NavigateTo("notfound");
+        }
+    }
+
+    // To protect from overposting attacks, enable the specific properties you want to bind to.
+    // For more information, see https://learn.microsoft.com/aspnet/core/blazor/forms/#mitigate-overposting-attacks.
+    private async Task UpdateEQUIPMENT()
+    {
+        using var context = DbFactory.CreateDbContext();
+        context.Attach(EQUIPMENT!).State = EntityState.Modified;
+
+        try
+        {
+            await context.SaveChangesAsync();
+        }
+        catch (DbUpdateConcurrencyException)
+        {
+            if (!EQUIPMENTExists(EQUIPMENT!.EquipmentId))
+            {
+                NavigationManager.NavigateTo("notfound");
+            }
+            else
+            {
+                throw;
+            }
+        }
+
+        NavigationManager.NavigateTo("/equipments");
+    }
+
+    private bool EQUIPMENTExists(int equipmentid)
+    {
+        using var context = DbFactory.CreateDbContext();
+        return context.EQUIPMENT.Any(e => e.EquipmentId == equipmentid);
+    }
+}

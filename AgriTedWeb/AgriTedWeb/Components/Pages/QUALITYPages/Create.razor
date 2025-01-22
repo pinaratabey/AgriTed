@@ -1,0 +1,141 @@
+﻿@page "/qualities/create"
+
+@using Microsoft.EntityFrameworkCore
+
+@using DataAccess
+
+@inject IDbContextFactory<AgriTedWeb.Data.AgriTedWebContext> DbFactory
+
+@inject NavigationManager NavigationManager
+
+
+
+<PageTitle>Create</PageTitle>
+
+
+
+<h1>Create</h1>
+
+
+
+<h2>QUALITY</h2>
+
+<hr />
+
+<div class="row">
+
+    <div class="col-md-4">
+
+        <EditForm method="post" Model="QUALITY" OnValidSubmit="AddQUALITY" FormName="create" Enhance>
+
+            <DataAnnotationsValidator />
+
+            <ValidationSummary class="text-danger" role="alert" />
+
+
+
+            <div class="mb-3">
+
+                <label for="fertilizerdid" class="form-label">Fertilizer Type :</label>
+
+                <InputSelect id="fertilizerdid" @bind-Value="QUALITY.FertilizerId" class="form-select">
+
+                    <option value="">-- Please select a Fertilizer --</option>
+
+                    @foreach (var fertilizerid in Fertilizers)
+
+                    {
+
+                        <option value="@fertilizerid.FertilizerId">@fertilizerid.Type</option>
+
+                    }
+
+                </InputSelect>
+
+                <ValidationMessage For="() => QUALITY.FertilizerId" class="text-danger" />
+
+            </div>
+
+
+
+            <div class="mb-3">
+
+                <label for="qualitydescription" class="form-label">Quality Description:</label>
+
+                <InputSelect id="qualitydescription" @bind-Value="QUALITY.QualityDescription" class="form-select">
+
+                    <option value="">-- Please select a quality description --</option>
+
+                    <option value="High Potassium">High Potassium</option>
+
+                    <option value="Low Phosphate">Low Phosphate</option>
+
+                </InputSelect>
+
+                <ValidationMessage For="() => QUALITY.QualityDescription" class="text-danger" />
+
+
+
+            </div>
+
+
+
+            <button type="submit" class="btn btn-outline-primary">Create</button>
+
+        </EditForm>
+
+    </div>
+
+</div>
+
+
+
+<div>
+
+    <a href="/qualities" class="btn btn-outline-secondary">Back to List</a>
+
+</div>
+
+
+
+@code {
+
+    [SupplyParameterFromForm]
+
+    private QUALITY QUALITY { get; set; } = new();
+
+
+
+    private List<FERTILIZER> Fertilizers { get; set; } = new(); // List of fertilizers
+
+
+
+    protected override async Task OnInitializedAsync()
+
+    {
+
+        using var context = DbFactory.CreateDbContext();
+
+        // Load fertilizers for the dropdown
+
+        Fertilizers = await context.FERTILIZER.ToListAsync();
+
+    }
+
+
+
+    private async Task AddQUALITY()
+
+    {
+
+        using var context = DbFactory.CreateDbContext();
+
+        context.QUALITY.Add(QUALITY);
+
+        await context.SaveChangesAsync();
+
+        NavigationManager.NavigateTo("/qualities");
+
+    }
+
+}

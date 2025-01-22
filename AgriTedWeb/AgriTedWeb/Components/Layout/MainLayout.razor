@@ -1,0 +1,28 @@
+﻿@inherits LayoutComponentBase
+
+<div class="page">
+    <div class="sidebar">
+        <NavMenu />
+    </div>
+
+    <main>
+        <div class="top-row px-4">
+            <p class="title">AGRITED Datebase System</p>
+            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank" class="about-link">About</a>
+        </div>
+
+        <article class="content px-4">
+            @Body
+        </article>
+    </main>
+</div>
+<footer style="text-align:center; margin-top:20px; padding:10px; background-color:#f1f1f1;">
+    <p>Copyright© 2024 AgriTED. Made by Pınar Atabey</p>
+</footer>
+
+
+<div id="blazor-error-ui">
+    An unhandled error has occurred.
+    <a href="" class="reload">Reload</a>
+    <a class="dismiss">🗙</a>
+</div>

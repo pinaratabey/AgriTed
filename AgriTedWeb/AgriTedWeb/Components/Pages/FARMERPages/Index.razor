@@ -1,0 +1,43 @@
+﻿@page "/farmers"
+@using Microsoft.EntityFrameworkCore
+@using Microsoft.AspNetCore.Components.QuickGrid
+@using DataAccess
+@using AgriTedWeb.Data
+@implements IAsyncDisposable
+@inject IDbContextFactory<AgriTedWeb.Data.AgriTedWebContext> DbFactory
+
+<PageTitle>Index</PageTitle>
+
+<h1>Index</h1>
+
+<p>
+    <a href="farmers/create" class="btn btn-outline-success">Create New</a>
+</p>
+
+<QuickGrid Class="table" Items="context.FARMER">
+    <PropertyColumn Property="farmer => farmer.Name" />
+    <PropertyColumn Property="farmer => farmer.Age" />
+    <PropertyColumn Title="Phone Number" Property="farmer => farmer.PhoneNumber" />
+    <PropertyColumn Property="farmer => farmer.Address" />
+    <PropertyColumn Title="Payment Method" Property="farmer => farmer.PaymentMethod" />
+    <PropertyColumn Property="farmer => farmer.Experience" />
+    
+
+
+    <TemplateColumn Context="farmer">
+        <a href="@($"farmers/edit?farmerid={farmer.FarmerId}")" class="btn btn-outline-warning">Edit</a> |
+        <a href="@($"farmers/details?farmerid={farmer.FarmerId}")" class="btn btn-outline-info">Details</a> |
+        <a href="@($"farmers/delete?farmerid={farmer.FarmerId}")" class="btn btn-outline-danger">Delete</a>
+    </TemplateColumn>
+</QuickGrid>
+
+@code {
+    private AgriTedWebContext context = default!;
+
+    protected override void OnInitialized()
+    {
+        context = DbFactory.CreateDbContext();
+    }
+
+    public async ValueTask DisposeAsync() => await context.DisposeAsync();
+}

@@ -1,0 +1,13 @@
+wwwroot\app.css
+wwwroot\bootstrap\bootstrap.min.css
+wwwroot\bootstrap\bootstrap.min.css.map
+wwwroot\css\fontawesome.min.css
+wwwroot\favicon.png
+wwwroot\fonts\fa-brands-400.ttf
+wwwroot\fonts\fa-brands-400.woff2
+wwwroot\fonts\fa-regular-400.ttf
+wwwroot\fonts\fa-regular-400.woff2
+wwwroot\fonts\fa-solid-900.ttf
+wwwroot\fonts\fa-solid-900.woff2
+wwwroot\fonts\fa-v4compatibility.ttf
+wwwroot\fonts\fa-v4compatibility.woff2

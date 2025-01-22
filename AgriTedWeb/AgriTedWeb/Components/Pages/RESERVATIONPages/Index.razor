@@ -1,0 +1,53 @@
+﻿@page "/reservations"
+@using Microsoft.EntityFrameworkCore
+@using Microsoft.AspNetCore.Components.QuickGrid
+@using DataAccess
+@using AgriTedWeb.Data
+@implements IAsyncDisposable
+@inject IDbContextFactory<AgriTedWeb.Data.AgriTedWebContext> DbFactory
+
+<PageTitle>Reservations</PageTitle>
+
+<h1>Reservations</h1>
+
+<p>
+    <a href="reservations/create" class="btn btn-outline-success">Create New</a>
+</p>
+
+<QuickGrid Class="table" Items="@reservationsQuery" TGridItem="RESERVATION">
+    <PropertyColumn Title="Field Name" Property="reservation => reservation.FIELD.Name" />
+    <PropertyColumn Title="Farmer Name" Property="reservation => reservation.FARMER.Name" />
+    <PropertyColumn Title="Crop Type" Property="reservation => reservation.CROP.Type" />
+    <PropertyColumn Title="Equipment Name" Property="reservation => reservation.EQUIPMENT.Type" />
+    <PropertyColumn Title="Fertilizer Name" Property="reservation => reservation.FERTILIZER.Type" />
+    <PropertyColumn Title="Total Price (TL)" Property="reservation => reservation.TotalPrice" />
+    <PropertyColumn Title="Start Date" Property="reservation => reservation.StartDate" />
+    <PropertyColumn Title="End Date" Property="reservation => reservation.EndDate" />
+    
+
+    <TemplateColumn Context="reservation">
+        <a href="@($"reservations/edit?reservationid={reservation.ReservationId}")" class="btn btn-outline-warning">Edit</a> |
+        <a href="@($"reservations/details?reservationid={reservation.ReservationId}")" class="btn btn-outline-info">Details</a> |
+        <a href="@($"reservations/delete?reservationid={reservation.ReservationId}")" class="btn btn-outline-danger">Delete</a>
+    </TemplateColumn>
+</QuickGrid>
+
+@code {
+    private AgriTedWebContext context = default!;
+    private IQueryable<RESERVATION> reservationsQuery = default!;
+
+    protected override async Task OnInitializedAsync()
+    {
+        context = DbFactory.CreateDbContext();
+
+        // Prepare IQueryable for QuickGrid
+        reservationsQuery = context.RESERVATION
+            .Include(r => r.FIELD)       // Load Field entity
+            .Include(r => r.FARMER)      // Load Farmer entity
+            .Include(r => r.CROP)        // Load Crop entity
+            .Include(r => r.EQUIPMENT)   // Load Equipment entity
+            .Include(r => r.FERTILIZER); // Load Fertilizer entity
+    }
+
+    public async ValueTask DisposeAsync() => await context.DisposeAsync();
+}

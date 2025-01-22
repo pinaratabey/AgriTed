@@ -1,0 +1,112 @@
+.page[b-coelk3qltp] {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+main[b-coelk3qltp] {
+    flex: 1;
+}
+
+.sidebar[b-coelk3qltp] {
+    background-image: linear-gradient(180deg, rgb(29, 139, 71) 40%, #bd9035 100%);
+}
+
+.top-row[b-coelk3qltp] {
+    display: flex; /* Flexbox etkinle�tir */
+    justify-content: space-between; /* Elemanlar aras�nda bo�luk yarat */
+    align-items: center; /* Dikeyde ortalar */
+    padding: 10px 20px; /* Kenarl�k eklemek i�in padding */
+    background-color: #f5f5f5; /* Arka plan rengi (iste�e ba�l�) */
+}
+
+.title[b-coelk3qltp] {
+    margin: 0 auto; /* Ortalamak i�in margin */
+    text-align: center; /* Yaz�y� ortalar */
+    flex-grow: 1; /* Ortalamay� sa�lamak i�in alan geni�let */
+    font-size: 1.3rem; /* Yaz� boyutunu ayarla */
+    font-weight: bold; /* Yaz�y� kal�n yap */
+}
+
+.top-row[b-coelk3qltp] {
+    background-color: #f7f7f7;
+    border-bottom: 1px solid #d6d5d5;
+    justify-content: flex-end;
+    height: 3.5rem;
+    display: flex;
+    align-items: center;
+}
+
+    .top-row[b-coelk3qltp]  a, .top-row[b-coelk3qltp]  .btn-link {
+        white-space: nowrap;
+        margin-left: 1.5rem;
+        text-decoration: none;
+    }
+
+    .top-row[b-coelk3qltp]  a:hover, .top-row[b-coelk3qltp]  .btn-link:hover {
+        text-decoration: underline;
+    }
+
+    .top-row[b-coelk3qltp]  a:first-child {
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+@media (max-width: 640.98px) {
+    .top-row[b-coelk3qltp] {
+        justify-content: space-between;
+    }
+
+    .top-row[b-coelk3qltp]  a, .top-row[b-coelk3qltp]  .btn-link {
+        margin-left: 0;
+    }
+}
+
+@media (min-width: 641px) {
+    .page[b-coelk3qltp] {
+        flex-direction: row;
+    }
+
+    .sidebar[b-coelk3qltp] {
+        width: 250px;
+        height: 100vh;
+        position: sticky;
+        top: 0;
+    }
+
+    .top-row[b-coelk3qltp] {
+        position: sticky;
+        top: 0;
+        z-index: 1;
+    }
+
+    .top-row.auth[b-coelk3qltp]  a:first-child {
+        flex: 1;
+        text-align: right;
+        width: 0;
+    }
+
+    .top-row[b-coelk3qltp], article[b-coelk3qltp] {
+        padding-left: 2rem !important;
+        padding-right: 1.5rem !important;
+    }
+}
+
+#blazor-error-ui[b-coelk3qltp] {
+    background: lightyellow;
+    bottom: 0;
+    box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2);
+    display: none;
+    left: 0;
+    padding: 0.6rem 1.25rem 0.7rem 1.25rem;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+    #blazor-error-ui .dismiss[b-coelk3qltp] {
+        cursor: pointer;
+        position: absolute;
+        right: 0.75rem;
+        top: 0.5rem;
+    }

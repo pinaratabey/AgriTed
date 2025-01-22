@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AGRITEDPXModelStoreContainer" CdmEntityContainer="AGRITEDPXEntities">
+    <EntitySetMapping Name="CROP">
+      <EntityTypeMapping TypeName="AGRITEDPXModel.CROP">
+        <MappingFragment StoreEntitySet="CROP">
+          <ScalarProperty Name="CropId" ColumnName="CropId" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="AvarageYield" ColumnName="AvarageYield" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EQUIPMENT">
+      <EntityTypeMapping TypeName="AGRITEDPXModel.EQUIPMENT">
+        <MappingFragment StoreEntitySet="EQUIPMENT">
+          <ScalarProperty Name="EquipmentId" ColumnName="EquipmentId" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FARMER">
+      <EntityTypeMapping TypeName="AGRITEDPXModel.FARMER">
+        <MappingFragment StoreEntitySet="FARMER">
+          <ScalarProperty Name="FarmerId" ColumnName="FarmerId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="PaymentMethod" ColumnName="PaymentMethod" />
+          <ScalarProperty Name="Experience" ColumnName="Experience" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FERTILIZER">
+      <EntityTypeMapping TypeName="AGRITEDPXModel.FERTILIZER">
+        <MappingFragment StoreEntitySet="FERTILIZER">
+          <ScalarProperty Name="FertilizerId" ColumnName="FertilizerId" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FIELD">
+      <EntityTypeMapping TypeName="AGRITEDPXModel.FIELD">
+        <MappingFragment StoreEntitySet="FIELD">
+          <ScalarProperty Name="FieldId" ColumnName="FieldId" />
+          <ScalarProperty Name="RentalFee" ColumnName="RentalFee" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Size" ColumnName="Size" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QUALITY">
+      <EntityTypeMapping TypeName="AGRITEDPXModel.QUALITY">
+        <MappingFragment StoreEntitySet="QUALITY">
+          <ScalarProperty Name="QualityId" ColumnName="QualityId" />
+          <ScalarProperty Name="FertilizerId" ColumnName="FertilizerId" />
+          <ScalarProperty Name="QualityDescription" ColumnName="QualityDescription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RESERVATION">
+      <EntityTypeMapping TypeName="AGRITEDPXModel.RESERVATION">
+        <MappingFragment StoreEntitySet="RESERVATION">
+          <ScalarProperty Name="ReservationId" ColumnName="ReservationId" />
+          <ScalarProperty Name="FieldId" ColumnName="FieldId" />
+          <ScalarProperty Name="FarmerId" ColumnName="FarmerId" />
+          <ScalarProperty Name="CropId" ColumnName="CropId" />
+          <ScalarProperty Name="EquipmentId" ColumnName="EquipmentId" />
+          <ScalarProperty Name="FertilizerId" ColumnName="FertilizerId" />
+          <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SUPPLIER">
+      <EntityTypeMapping TypeName="AGRITEDPXModel.SUPPLIER">
+        <MappingFragment StoreEntitySet="SUPPLIER">
+          <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="ProductType" ColumnName="ProductType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="CROPFERTILIZER" TypeName="AGRITEDPXModel.CROPFERTILIZER" StoreEntitySet="CROPFERTILIZER">
+      <EndProperty Name="CROP">
+        <ScalarProperty Name="CropId" ColumnName="CropId" />
+      </EndProperty>
+      <EndProperty Name="FERTILIZER">
+        <ScalarProperty Name="FertilizerId" ColumnName="FertilizerId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CROPSUPPLIER" TypeName="AGRITEDPXModel.CROPSUPPLIER" StoreEntitySet="CROPSUPPLIER">
+      <EndProperty Name="CROP">
+        <ScalarProperty Name="CropId" ColumnName="CropId" />
+      </EndProperty>
+      <EndProperty Name="SUPPLIER">
+        <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FERTILIZERSUPPLIER" TypeName="AGRITEDPXModel.FERTILIZERSUPPLIER" StoreEntitySet="FERTILIZERSUPPLIER">
+      <EndProperty Name="FERTILIZER">
+        <ScalarProperty Name="FertilizerId" ColumnName="FertilizerId" />
+      </EndProperty>
+      <EndProperty Name="SUPPLIER">
+        <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="USEDFOR" TypeName="AGRITEDPXModel.USEDFOR" StoreEntitySet="USEDFOR">
+      <EndProperty Name="CROP">
+        <ScalarProperty Name="CropId" ColumnName="CropId" />
+      </EndProperty>
+      <EndProperty Name="EQUIPMENT">
+        <ScalarProperty Name="EquipmentId" ColumnName="EquipmentId" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

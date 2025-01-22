@@ -1,0 +1,86 @@
+﻿@page "/farmers/create"
+@using Microsoft.EntityFrameworkCore
+@using DataAccess
+@inject IDbContextFactory<AgriTedWeb.Data.AgriTedWebContext> DbFactory
+@inject NavigationManager NavigationManager
+
+<PageTitle>Create</PageTitle>
+
+<h1>Create</h1>
+
+<h2>FARMER</h2>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <EditForm method="post" Model="FARMER" OnValidSubmit="AddFARMER" FormName="create" Enhance>
+            <DataAnnotationsValidator />
+            <ValidationSummary class="text-danger" role="alert" />
+            <div class="mb-3">
+                <label for="name" class="form-label">Name:</label>
+                <InputText id="name" @bind-Value="FARMER.Name" class="form-control" />
+                <ValidationMessage For="() => FARMER.Name" class="text-danger" />
+            </div>
+            <div class="mb-3">
+                <label for="age" class="form-label">Age:</label>
+                <InputNumber id="age" @bind-Value="FARMER.Age" class="form-control" />
+                <ValidationMessage For="() => FARMER.Age" class="text-danger" />
+            </div>
+            <div class="mb-3">
+                <label for="phonenumber" class="form-label">PhoneNumber:</label>
+                <InputText id="phonenumber" @bind-Value="FARMER.PhoneNumber" class="form-control" />
+                <ValidationMessage For="() => FARMER.PhoneNumber" class="text-danger" />
+            </div>
+            <div class="mb-3">
+                <label for="address" class="form-label">Address:</label>
+                <InputText id="address" @bind-Value="FARMER.Address" class="form-control" />
+                <ValidationMessage For="() => FARMER.Address" class="text-danger" />
+            </div>
+            
+            <div class="mb-3">
+                <label for="paymentmethod" class="form-label">Payment Method:</label>
+                <InputText id="paymentmethod" @bind-Value="FARMER.PaymentMethod" class="form-control" />
+                <ValidationMessage For="() => FARMER.PaymentMethod" class="text-danger" />
+                @if (string.IsNullOrEmpty(FARMER.PaymentMethod))
+                {
+                    <span class="text-warning">cash or card</span>
+                }
+            </div>
+
+            <div class="mb-3">
+                <label for="experience" class="form-label">Experience:</label>
+                <InputNumber id="experience" @bind-Value="FARMER.Experience" class="form-control" />
+                <ValidationMessage For="() => FARMER.Experience" class="text-danger" />
+               
+            </div>
+            <div class="mb-3">
+                <label for="gender" class="form-label">Gender:</label>
+                <InputText id="gender" @bind-Value="FARMER.Gender" class="form-control" />
+                <ValidationMessage For="() => FARMER.Gender" class="text-danger" />
+                @if (string.IsNullOrEmpty(FARMER.Gender))
+                {
+                    <span class="text-warning">female or male</span>
+                }
+            </div>
+
+            <button type="submit" class="btn btn-outline-primary">Create</button>
+        </EditForm>
+    </div>
+</div>
+
+<div>
+    <a href="/farmers" class="btn btn-outline-secondary">Back to List</a>
+</div>
+
+@code {
+    [SupplyParameterFromForm]
+    private FARMER FARMER { get; set; } = new();
+
+    // Add FARMER method
+    private async Task AddFARMER()
+    {
+        using var context = DbFactory.CreateDbContext();
+        context.FARMER.Add(FARMER);
+        await context.SaveChangesAsync();
+        NavigationManager.NavigateTo("/farmers");
+    }
+}

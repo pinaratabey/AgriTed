@@ -1,0 +1,41 @@
+﻿@page "/qualities"
+@using Microsoft.EntityFrameworkCore
+@using Microsoft.AspNetCore.Components.QuickGrid
+@using DataAccess
+@using AgriTedWeb.Data
+@implements IAsyncDisposable
+@inject IDbContextFactory<AgriTedWeb.Data.AgriTedWebContext> DbFactory
+
+<PageTitle>Qualities</PageTitle>
+
+<h1>Qualities</h1>
+
+<p>
+    <a href="qualities/create" class="btn btn-outline-success">Create New</a>
+</p>
+
+<QuickGrid Class="table" Items="@qualitiesQuery" TGridItem="QUALITY">
+    <PropertyColumn Title="Fertilizer Type" Property="quality => quality.FERTILIZER.Type" />
+    <PropertyColumn Title="Quality Description" Property="quality => quality.QualityDescription" />
+
+    <TemplateColumn Context="quality">
+        <a href="@($"qualities/edit?qualityid={quality.QualityId}")" class="btn btn-outline-warning">Edit</a> |
+        <a href="@($"qualities/details?qualityid={quality.QualityId}")" class="btn btn-outline-info">Details</a> |
+        <a href="@($"qualities/delete?qualityid={quality.QualityId}")" class="btn btn-outline-danger">Delete</a>
+    </TemplateColumn>
+</QuickGrid>
+
+@code {
+    private AgriTedWebContext context = default!;
+    private IQueryable<QUALITY> qualitiesQuery = default!;
+
+    protected override async Task OnInitializedAsync()
+    {
+        context = DbFactory.CreateDbContext();
+
+        // Load QUALITIES with related FERTILIZER entities using IQueryable
+        qualitiesQuery = context.QUALITY.Include(q => q.FERTILIZER);
+    }
+
+    public async ValueTask DisposeAsync() => await context.DisposeAsync();
+}

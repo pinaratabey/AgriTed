@@ -1,0 +1,179 @@
+﻿@page "/reservations/create"
+@using Microsoft.EntityFrameworkCore
+@using DataAccess
+@inject IDbContextFactory<AgriTedWeb.Data.AgriTedWebContext> DbFactory
+@inject NavigationManager NavigationManager
+
+@rendermode InteractiveServer
+
+<PageTitle>Create</PageTitle>
+
+<h1>Create</h1>
+
+<h2>RESERVATION</h2>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <EditForm Model="RESERVATION" OnValidSubmit="AddRESERVATION" FormName="create" Enhance>
+            <DataAnnotationsValidator />
+            <ValidationSummary class="text-danger" role="alert" />
+
+            <!-- Field Selection Dropdown -->
+            <div class="mb-3">
+                <label for="fieldid" class="form-label">Field:</label>
+                <InputSelect id="fieldid" @bind-Value="RESERVATION.FieldId" class="form-select" @onchange="UpdateTotalPrice">
+                    <option value="">-- Please select a field --</option>
+                    @foreach (var field in Fields)
+                    {
+                        <option value="@field.FieldId">@field.Name</option>
+                    }
+                </InputSelect>
+                <ValidationMessage For="() => RESERVATION.FieldId" class="text-danger" />
+            </div>
+
+            <!-- Farmer Selection Dropdown -->
+            <div class="mb-3">
+                <label for="farmerid" class="form-label">Farmer:</label>
+                <InputSelect id="farmerid" @bind-Value="RESERVATION.FarmerId" class="form-select">
+                    <option value="">-- Please select a farmer --</option>
+                    @foreach (var farmer in Farmers)
+                    {
+                        <option value="@farmer.FarmerId">@farmer.Name</option>
+                    }
+                </InputSelect>
+                <ValidationMessage For="() => RESERVATION.FarmerId" class="text-danger" />
+            </div>
+
+            <!-- Crop Selection Dropdown -->
+            <div class="mb-3">
+                <label for="cropid" class="form-label">Crop:</label>
+                <InputSelect id="cropid" @bind-Value="RESERVATION.CropId" class="form-select" onselect="() => UpdateTotalPrice()">
+                    <option value="">-- Please select a crop --</option>
+                    @foreach (var crop in Crops)
+                    {
+                        <option value="@crop.CropId">@crop.Type</option>
+                    }
+                </InputSelect>
+                <ValidationMessage For="() => RESERVATION.CropId" class="text-danger" />
+            </div>
+
+            <!-- Equipment Selection Dropdown -->
+            <div class="mb-3">
+                <label for="equipmentid" class="form-label">Equipment:</label>
+                <InputSelect id="equipmentid" @bind-Value="RESERVATION.EquipmentId" class="form-select" @onchange="UpdateTotalPrice">
+                    <option value="">-- Please select equipment --</option>
+                    @foreach (var equipment in EquipmentList)
+                    {
+                        <option value="@equipment.EquipmentId">@equipment.Type</option>
+                    }
+                </InputSelect>
+                <ValidationMessage For="() => RESERVATION.EquipmentId" class="text-danger" />
+            </div>
+
+            <!-- Fertilizer Selection Dropdown -->
+            <div class="mb-3">
+                <label for="fertilizerid" class="form-label">Fertilizer:</label>
+                <InputSelect id="fertilizerid" @bind-Value="RESERVATION.FertilizerId" class="form-select" @onchange="() => UpdateTotalPrice()">
+                    <option value="">-- Please select a fertilizer --</option>
+                    @foreach (var fertilizer in Fertilizers)
+                    {
+                        <option value="@fertilizer.FertilizerId">@fertilizer.Type</option>
+                    }
+                </InputSelect>
+                <ValidationMessage For="() => RESERVATION.FertilizerId" class="text-danger" />
+            </div>
+
+            <!-- Total Price -->
+            <div class="mb-3">
+                <label for="totalprice" class="form-label">Total Price:</label>
+                <InputNumber id="totalprice" @bind-Value="@TotalPrice" class="form-control" readonly />
+
+            </div>
+
+            <!-- Start Date -->
+            <div class="mb-3">
+                <label for="startdate" class="form-label">Start Date:</label>
+                <InputDate id="startdate" @bind-Value="RESERVATION.StartDate" class="form-control" />
+                <ValidationMessage For="() => RESERVATION.StartDate" class="text-danger" />
+            </div>
+
+            <!-- End Date -->
+            <div class="mb-3">
+                <label for="enddate" class="form-label">End Date:</label>
+                <InputDate id="enddate" @bind-Value="RESERVATION.EndDate" class="form-control" />
+                <ValidationMessage For="() => RESERVATION.EndDate" class="text-danger" />
+            </div>
+
+            <button type="submit" class="btn btn-outline-primary">Create</button>
+        </EditForm>
+    </div>
+</div>
+
+<div>
+    <a href="/reservations" class="btn btn-outline-secondary">Back to List</a>
+</div>
+
+@code {
+
+
+
+    [SupplyParameterFromForm]
+    private RESERVATION RESERVATION { get; set; } = new();
+
+    private List<FIELD> Fields { get; set; } = new();
+    private List<FARMER> Farmers { get; set; } = new();
+    private List<CROP> Crops { get; set; } = new();
+    private List<EQUIPMENT> EquipmentList { get; set; } = new();
+    private List<FERTILIZER> Fertilizers { get; set; } = new();
+
+    private string? ErrorMessage { get; set; }
+    private decimal TotalPrice { get; set; } = 0;
+    public static int TotalReservations { get; private set; }
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        using var context = DbFactory.CreateDbContext();
+
+        RESERVATION.StartDate = DateTime.Now;
+        RESERVATION.EndDate = DateTime.Now;
+
+        // Load dropdown data
+        Fields = await context.FIELD.ToListAsync();
+        Farmers = await context.FARMER.ToListAsync();
+        Crops = await context.CROP.ToListAsync();
+        EquipmentList = await context.EQUIPMENT.ToListAsync();
+        Fertilizers = await context.FERTILIZER.ToListAsync();
+    }
+
+    private async Task AddRESERVATION()
+    {
+        using var context = DbFactory.CreateDbContext();
+
+
+
+        // Assign calculated TotalPrice to the reservation
+
+        UpdateTotalPrice();
+        RESERVATION.TotalPrice = TotalPrice;
+
+        // Save reservation
+        context.RESERVATION.Add(RESERVATION);
+        await context.SaveChangesAsync();
+        TotalReservations++;
+        NavigationManager.NavigateTo("/reservations");
+    }
+
+    private void UpdateTotalPrice()
+    {
+        var selectedFieldPrice = Fields.FirstOrDefault(f => f.FieldId == RESERVATION.FieldId)?.RentalFee ?? 0;
+        var selectedCropPrice = Crops.FirstOrDefault(c => c.CropId == RESERVATION.CropId)?.Price ?? 0;
+        var selectedEquipmentPrice = EquipmentList.FirstOrDefault(e => e.EquipmentId == RESERVATION.EquipmentId)?.Price ?? 0;
+        var selectedFertilizerPrice = Fertilizers.FirstOrDefault(f => f.FertilizerId == RESERVATION.FertilizerId)?.Price ?? 0;
+
+        TotalPrice = selectedFieldPrice + selectedCropPrice + selectedEquipmentPrice + selectedFertilizerPrice;
+
+        StateHasChanged();
+
+    }
+}

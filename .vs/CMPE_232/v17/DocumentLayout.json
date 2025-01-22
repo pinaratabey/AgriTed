@@ -1,0 +1,243 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Pinar Han\u0131m\\Desktop\\CMPE_232 - Kopya - (Ne olur ne olmaz)\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{9D183854-CD2C-407B-8C71-E2301C9902D1}|AgriTedWeb\\AgriTedWeb\\AgriTedWeb.csproj|c:\\users\\pinar han\u0131m\\desktop\\cmpe_232 - kopya - (ne olur ne olmaz)\\agritedweb\\agritedweb\\components\\pages\\reservationpages\\edit.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9D183854-CD2C-407B-8C71-E2301C9902D1}|AgriTedWeb\\AgriTedWeb\\AgriTedWeb.csproj|solutionrelative:agritedweb\\agritedweb\\components\\pages\\reservationpages\\edit.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D183854-CD2C-407B-8C71-E2301C9902D1}|AgriTedWeb\\AgriTedWeb\\AgriTedWeb.csproj|c:\\users\\pinar han\u0131m\\desktop\\cmpe_232 - kopya - (ne olur ne olmaz)\\agritedweb\\agritedweb\\components\\pages\\reservationpages\\details.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9D183854-CD2C-407B-8C71-E2301C9902D1}|AgriTedWeb\\AgriTedWeb\\AgriTedWeb.csproj|solutionrelative:agritedweb\\agritedweb\\components\\pages\\reservationpages\\details.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D183854-CD2C-407B-8C71-E2301C9902D1}|AgriTedWeb\\AgriTedWeb\\AgriTedWeb.csproj|c:\\users\\pinar han\u0131m\\desktop\\cmpe_232 - kopya - (ne olur ne olmaz)\\agritedweb\\agritedweb\\components\\pages\\reservationpages\\delete.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9D183854-CD2C-407B-8C71-E2301C9902D1}|AgriTedWeb\\AgriTedWeb\\AgriTedWeb.csproj|solutionrelative:agritedweb\\agritedweb\\components\\pages\\reservationpages\\delete.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D183854-CD2C-407B-8C71-E2301C9902D1}|AgriTedWeb\\AgriTedWeb\\AgriTedWeb.csproj|c:\\users\\pinar han\u0131m\\desktop\\cmpe_232 - kopya - (ne olur ne olmaz)\\agritedweb\\agritedweb\\components\\pages\\reservationpages\\create.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9D183854-CD2C-407B-8C71-E2301C9902D1}|AgriTedWeb\\AgriTedWeb\\AgriTedWeb.csproj|solutionrelative:agritedweb\\agritedweb\\components\\pages\\reservationpages\\create.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D183854-CD2C-407B-8C71-E2301C9902D1}|AgriTedWeb\\AgriTedWeb\\AgriTedWeb.csproj|c:\\users\\pinar han\u0131m\\desktop\\cmpe_232 - kopya - (ne olur ne olmaz)\\agritedweb\\agritedweb\\components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9D183854-CD2C-407B-8C71-E2301C9902D1}|AgriTedWeb\\AgriTedWeb\\AgriTedWeb.csproj|solutionrelative:agritedweb\\agritedweb\\components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D183854-CD2C-407B-8C71-E2301C9902D1}|AgriTedWeb\\AgriTedWeb\\AgriTedWeb.csproj|c:\\users\\pinar han\u0131m\\desktop\\cmpe_232 - kopya - (ne olur ne olmaz)\\agritedweb\\agritedweb\\components\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9D183854-CD2C-407B-8C71-E2301C9902D1}|AgriTedWeb\\AgriTedWeb\\AgriTedWeb.csproj|solutionrelative:agritedweb\\agritedweb\\components\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D183854-CD2C-407B-8C71-E2301C9902D1}|AgriTedWeb\\AgriTedWeb\\AgriTedWeb.csproj|c:\\users\\pinar han\u0131m\\desktop\\cmpe_232 - kopya - (ne olur ne olmaz)\\agritedweb\\agritedweb\\components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9D183854-CD2C-407B-8C71-E2301C9902D1}|AgriTedWeb\\AgriTedWeb\\AgriTedWeb.csproj|solutionrelative:agritedweb\\agritedweb\\components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D183854-CD2C-407B-8C71-E2301C9902D1}|AgriTedWeb\\AgriTedWeb\\AgriTedWeb.csproj|c:\\users\\pinar han\u0131m\\desktop\\cmpe_232 - kopya - (ne olur ne olmaz)\\agritedweb\\agritedweb\\components\\pages\\reservationpages\\index.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9D183854-CD2C-407B-8C71-E2301C9902D1}|AgriTedWeb\\AgriTedWeb\\AgriTedWeb.csproj|solutionrelative:agritedweb\\agritedweb\\components\\pages\\reservationpages\\index.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D183854-CD2C-407B-8C71-E2301C9902D1}|AgriTedWeb\\AgriTedWeb\\AgriTedWeb.csproj|c:\\users\\pinar han\u0131m\\desktop\\cmpe_232 - kopya - (ne olur ne olmaz)\\agritedweb\\agritedweb\\agritedweb.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{9D183854-CD2C-407B-8C71-E2301C9902D1}|AgriTedWeb\\AgriTedWeb\\AgriTedWeb.csproj|solutionrelative:agritedweb\\agritedweb\\agritedweb.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D183854-CD2C-407B-8C71-E2301C9902D1}|AgriTedWeb\\AgriTedWeb\\AgriTedWeb.csproj|c:\\users\\pinar han\u0131m\\desktop\\cmpe_232 - kopya - (ne olur ne olmaz)\\agritedweb\\agritedweb\\components\\pages\\farmerpages\\create.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9D183854-CD2C-407B-8C71-E2301C9902D1}|AgriTedWeb\\AgriTedWeb\\AgriTedWeb.csproj|solutionrelative:agritedweb\\agritedweb\\components\\pages\\farmerpages\\create.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D183854-CD2C-407B-8C71-E2301C9902D1}|AgriTedWeb\\AgriTedWeb\\AgriTedWeb.csproj|c:\\users\\pinar han\u0131m\\desktop\\cmpe_232 - kopya - (ne olur ne olmaz)\\agritedweb\\agritedweb\\components\\pages\\farmerpages\\delete.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9D183854-CD2C-407B-8C71-E2301C9902D1}|AgriTedWeb\\AgriTedWeb\\AgriTedWeb.csproj|solutionrelative:agritedweb\\agritedweb\\components\\pages\\farmerpages\\delete.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D183854-CD2C-407B-8C71-E2301C9902D1}|AgriTedWeb\\AgriTedWeb\\AgriTedWeb.csproj|c:\\users\\pinar han\u0131m\\desktop\\cmpe_232 - kopya - (ne olur ne olmaz)\\agritedweb\\agritedweb\\components\\pages\\farmerpages\\edit.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9D183854-CD2C-407B-8C71-E2301C9902D1}|AgriTedWeb\\AgriTedWeb\\AgriTedWeb.csproj|solutionrelative:agritedweb\\agritedweb\\components\\pages\\farmerpages\\edit.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Edit.razor",
+              "DocumentMoniker": "C:\\Users\\Pinar Han\u0131m\\Desktop\\CMPE_232 - Kopya - (Ne olur ne olmaz)\\AgriTedWeb\\AgriTedWeb\\Components\\Pages\\RESERVATIONPages\\Edit.razor",
+              "RelativeDocumentMoniker": "AgriTedWeb\\AgriTedWeb\\Components\\Pages\\RESERVATIONPages\\Edit.razor",
+              "ToolTip": "C:\\Users\\Pinar Han\u0131m\\Desktop\\CMPE_232 - Kopya - (Ne olur ne olmaz)\\AgriTedWeb\\AgriTedWeb\\Components\\Pages\\RESERVATIONPages\\Edit.razor",
+              "RelativeToolTip": "AgriTedWeb\\AgriTedWeb\\Components\\Pages\\RESERVATIONPages\\Edit.razor",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAAAC0AAABSAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-22T12:07:07.039Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Details.razor",
+              "DocumentMoniker": "C:\\Users\\Pinar Han\u0131m\\Desktop\\CMPE_232 - Kopya - (Ne olur ne olmaz)\\AgriTedWeb\\AgriTedWeb\\Components\\Pages\\RESERVATIONPages\\Details.razor",
+              "RelativeDocumentMoniker": "AgriTedWeb\\AgriTedWeb\\Components\\Pages\\RESERVATIONPages\\Details.razor",
+              "ToolTip": "C:\\Users\\Pinar Han\u0131m\\Desktop\\CMPE_232 - Kopya - (Ne olur ne olmaz)\\AgriTedWeb\\AgriTedWeb\\Components\\Pages\\RESERVATIONPages\\Details.razor",
+              "RelativeToolTip": "AgriTedWeb\\AgriTedWeb\\Components\\Pages\\RESERVATIONPages\\Details.razor",
+              "ViewState": "AgIAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-22T12:07:03.649Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Delete.razor",
+              "DocumentMoniker": "C:\\Users\\Pinar Han\u0131m\\Desktop\\CMPE_232 - Kopya - (Ne olur ne olmaz)\\AgriTedWeb\\AgriTedWeb\\Components\\Pages\\RESERVATIONPages\\Delete.razor",
+              "RelativeDocumentMoniker": "AgriTedWeb\\AgriTedWeb\\Components\\Pages\\RESERVATIONPages\\Delete.razor",
+              "ToolTip": "C:\\Users\\Pinar Han\u0131m\\Desktop\\CMPE_232 - Kopya - (Ne olur ne olmaz)\\AgriTedWeb\\AgriTedWeb\\Components\\Pages\\RESERVATIONPages\\Delete.razor",
+              "RelativeToolTip": "AgriTedWeb\\AgriTedWeb\\Components\\Pages\\RESERVATIONPages\\Delete.razor",
+              "ViewState": "AgIAAD8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-22T12:06:57.853Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Create.razor",
+              "DocumentMoniker": "C:\\Users\\Pinar Han\u0131m\\Desktop\\CMPE_232 - Kopya - (Ne olur ne olmaz)\\AgriTedWeb\\AgriTedWeb\\Components\\Pages\\RESERVATIONPages\\Create.razor",
+              "RelativeDocumentMoniker": "AgriTedWeb\\AgriTedWeb\\Components\\Pages\\RESERVATIONPages\\Create.razor",
+              "ToolTip": "C:\\Users\\Pinar Han\u0131m\\Desktop\\CMPE_232 - Kopya - (Ne olur ne olmaz)\\AgriTedWeb\\AgriTedWeb\\Components\\Pages\\RESERVATIONPages\\Create.razor",
+              "RelativeToolTip": "AgriTedWeb\\AgriTedWeb\\Components\\Pages\\RESERVATIONPages\\Create.razor",
+              "ViewState": "AgIAAJYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-22T12:06:48.797Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "NavMenu.razor",
+              "DocumentMoniker": "C:\\Users\\Pinar Han\u0131m\\Desktop\\CMPE_232 - Kopya - (Ne olur ne olmaz)\\AgriTedWeb\\AgriTedWeb\\Components\\Layout\\NavMenu.razor",
+              "RelativeDocumentMoniker": "AgriTedWeb\\AgriTedWeb\\Components\\Layout\\NavMenu.razor",
+              "ToolTip": "C:\\Users\\Pinar Han\u0131m\\Desktop\\CMPE_232 - Kopya - (Ne olur ne olmaz)\\AgriTedWeb\\AgriTedWeb\\Components\\Layout\\NavMenu.razor",
+              "RelativeToolTip": "AgriTedWeb\\AgriTedWeb\\Components\\Layout\\NavMenu.razor",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAEMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-22T12:06:33.619Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Index.razor",
+              "DocumentMoniker": "C:\\Users\\Pinar Han\u0131m\\Desktop\\CMPE_232 - Kopya - (Ne olur ne olmaz)\\AgriTedWeb\\AgriTedWeb\\Components\\Pages\\RESERVATIONPages\\Index.razor",
+              "RelativeDocumentMoniker": "AgriTedWeb\\AgriTedWeb\\Components\\Pages\\RESERVATIONPages\\Index.razor",
+              "ToolTip": "C:\\Users\\Pinar Han\u0131m\\Desktop\\CMPE_232 - Kopya - (Ne olur ne olmaz)\\AgriTedWeb\\AgriTedWeb\\Components\\Pages\\RESERVATIONPages\\Index.razor",
+              "RelativeToolTip": "AgriTedWeb\\AgriTedWeb\\Components\\Pages\\RESERVATIONPages\\Index.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-22T11:42:35.956Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "MainLayout.razor",
+              "DocumentMoniker": "C:\\Users\\Pinar Han\u0131m\\Desktop\\CMPE_232 - Kopya - (Ne olur ne olmaz)\\AgriTedWeb\\AgriTedWeb\\Components\\Layout\\MainLayout.razor",
+              "RelativeDocumentMoniker": "AgriTedWeb\\AgriTedWeb\\Components\\Layout\\MainLayout.razor",
+              "ToolTip": "C:\\Users\\Pinar Han\u0131m\\Desktop\\CMPE_232 - Kopya - (Ne olur ne olmaz)\\AgriTedWeb\\AgriTedWeb\\Components\\Layout\\MainLayout.razor",
+              "RelativeToolTip": "AgriTedWeb\\AgriTedWeb\\Components\\Layout\\MainLayout.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-22T11:41:20.892Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "AgriTedWeb.csproj",
+              "DocumentMoniker": "C:\\Users\\Pinar Han\u0131m\\Desktop\\CMPE_232 - Kopya - (Ne olur ne olmaz)\\AgriTedWeb\\AgriTedWeb\\AgriTedWeb.csproj",
+              "RelativeDocumentMoniker": "AgriTedWeb\\AgriTedWeb\\AgriTedWeb.csproj",
+              "ToolTip": "C:\\Users\\Pinar Han\u0131m\\Desktop\\CMPE_232 - Kopya - (Ne olur ne olmaz)\\AgriTedWeb\\AgriTedWeb\\AgriTedWeb.csproj",
+              "RelativeToolTip": "AgriTedWeb\\AgriTedWeb\\AgriTedWeb.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-01-21T12:13:06.351Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Create.razor",
+              "DocumentMoniker": "C:\\Users\\Pinar Han\u0131m\\Desktop\\CMPE_232 - Kopya - (Ne olur ne olmaz)\\AgriTedWeb\\AgriTedWeb\\Components\\Pages\\FARMERPages\\Create.razor",
+              "RelativeDocumentMoniker": "AgriTedWeb\\AgriTedWeb\\Components\\Pages\\FARMERPages\\Create.razor",
+              "ToolTip": "C:\\Users\\Pinar Han\u0131m\\Desktop\\CMPE_232 - Kopya - (Ne olur ne olmaz)\\AgriTedWeb\\AgriTedWeb\\Components\\Pages\\FARMERPages\\Create.razor",
+              "RelativeToolTip": "AgriTedWeb\\AgriTedWeb\\Components\\Pages\\FARMERPages\\Create.razor",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAQwBYAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-28T11:31:45.764Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Delete.razor",
+              "DocumentMoniker": "C:\\Users\\Pinar Han\u0131m\\Desktop\\CMPE_232 - Kopya - (Ne olur ne olmaz)\\AgriTedWeb\\AgriTedWeb\\Components\\Pages\\FARMERPages\\Delete.razor",
+              "RelativeDocumentMoniker": "AgriTedWeb\\AgriTedWeb\\Components\\Pages\\FARMERPages\\Delete.razor",
+              "ToolTip": "C:\\Users\\Pinar Han\u0131m\\Desktop\\CMPE_232 - Kopya - (Ne olur ne olmaz)\\AgriTedWeb\\AgriTedWeb\\Components\\Pages\\FARMERPages\\Delete.razor",
+              "RelativeToolTip": "AgriTedWeb\\AgriTedWeb\\Components\\Pages\\FARMERPages\\Delete.razor",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-28T11:30:27.179Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Edit.razor",
+              "DocumentMoniker": "C:\\Users\\Pinar Han\u0131m\\Desktop\\CMPE_232 - Kopya - (Ne olur ne olmaz)\\AgriTedWeb\\AgriTedWeb\\Components\\Pages\\FARMERPages\\Edit.razor",
+              "RelativeDocumentMoniker": "AgriTedWeb\\AgriTedWeb\\Components\\Pages\\FARMERPages\\Edit.razor",
+              "ToolTip": "C:\\Users\\Pinar Han\u0131m\\Desktop\\CMPE_232 - Kopya - (Ne olur ne olmaz)\\AgriTedWeb\\AgriTedWeb\\Components\\Pages\\FARMERPages\\Edit.razor",
+              "RelativeToolTip": "AgriTedWeb\\AgriTedWeb\\Components\\Pages\\FARMERPages\\Edit.razor",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-28T11:27:11.491Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Home.razor",
+              "DocumentMoniker": "C:\\Users\\Pinar Han\u0131m\\Desktop\\CMPE_232 - Kopya - (Ne olur ne olmaz)\\AgriTedWeb\\AgriTedWeb\\Components\\Pages\\Home.razor",
+              "RelativeDocumentMoniker": "AgriTedWeb\\AgriTedWeb\\Components\\Pages\\Home.razor",
+              "ToolTip": "C:\\Users\\Pinar Han\u0131m\\Desktop\\CMPE_232 - Kopya - (Ne olur ne olmaz)\\AgriTedWeb\\AgriTedWeb\\Components\\Pages\\Home.razor",
+              "RelativeToolTip": "AgriTedWeb\\AgriTedWeb\\Components\\Pages\\Home.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAJ4AAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-28T11:13:20.66Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 63,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

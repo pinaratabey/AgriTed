@@ -1,0 +1,99 @@
+﻿@page "/fertilizers/edit"
+@using Microsoft.EntityFrameworkCore
+@using DataAccess
+@inject IDbContextFactory<AgriTedWeb.Data.AgriTedWebContext> DbFactory
+@inject NavigationManager NavigationManager
+
+<PageTitle>Edit</PageTitle>
+
+<h1>Edit</h1>
+
+<h2>FERTILIZER</h2>
+<hr />
+@if (FERTILIZER is null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <div class="row">
+        <div class="col-md-4">
+            <EditForm method="post" Model="FERTILIZER" OnValidSubmit="UpdateFERTILIZER" FormName="edit" Enhance>
+                <DataAnnotationsValidator />
+                <ValidationSummary role="alert"/>
+                <input type="hidden" name="FERTILIZER.FertilizerId" value="@FERTILIZER.FertilizerId" />
+                <div class="mb-3">
+                    <label for="type" class="form-label">Type:</label>
+                    <InputText id="type" @bind-Value="FERTILIZER.Type" class="form-control" />
+                    <ValidationMessage For="() => FERTILIZER.Type" class="text-danger" />
+                </div>
+                <div class="mb-3">
+                    <label for="amount" class="form-label">Amount:</label>
+                    <InputNumber id="amount" @bind-Value="FERTILIZER.Amount" class="form-control" />
+                    <ValidationMessage For="() => FERTILIZER.Amount" class="text-danger" />
+                </div>
+                <div class="mb-3">
+                    <label for="price" class="form-label">Price:</label>
+                    <InputNumber id="price" @bind-Value="FERTILIZER.Price" class="form-control" />
+                    <ValidationMessage For="() => FERTILIZER.Price" class="text-danger" />
+                </div>
+                <button type="submit" class="btn btn-outline-primary">Save</button>
+            </EditForm>
+        </div>
+    </div>
+}
+
+<div>
+    <a href="/fertilizers" class="btn btn-outline-secondary">Back to List</a>
+</div>
+
+@code {
+    [SupplyParameterFromQuery]
+    private int FertilizerId { get; set; }
+
+    [SupplyParameterFromForm]
+    private FERTILIZER? FERTILIZER { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        using var context = DbFactory.CreateDbContext();
+        FERTILIZER ??= await context.FERTILIZER.FirstOrDefaultAsync(m => m.FertilizerId == FertilizerId);
+
+        if (FERTILIZER is null)
+        {
+            NavigationManager.NavigateTo("notfound");
+        }
+    }
+
+    // To protect from overposting attacks, enable the specific properties you want to bind to.
+    // For more information, see https://learn.microsoft.com/aspnet/core/blazor/forms/#mitigate-overposting-attacks.
+    private async Task UpdateFERTILIZER()
+    {
+        using var context = DbFactory.CreateDbContext();
+        context.Attach(FERTILIZER!).State = EntityState.Modified;
+
+        try
+        {
+            await context.SaveChangesAsync();
+        }
+        catch (DbUpdateConcurrencyException)
+        {
+            if (!FERTILIZERExists(FERTILIZER!.FertilizerId))
+            {
+                NavigationManager.NavigateTo("notfound");
+            }
+            else
+            {
+                throw;
+            }
+        }
+
+        NavigationManager.NavigateTo("/fertilizers");
+    }
+
+    private bool FERTILIZERExists(int fertilizerid)
+    {
+        using var context = DbFactory.CreateDbContext();
+        return context.FERTILIZER.Any(e => e.FertilizerId == fertilizerid);
+    }
+}

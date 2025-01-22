@@ -1,0 +1,59 @@
+﻿@page "/suppliers/create"
+@using Microsoft.EntityFrameworkCore
+@using DataAccess
+@inject IDbContextFactory<AgriTedWeb.Data.AgriTedWebContext> DbFactory
+@inject NavigationManager NavigationManager
+
+<PageTitle>Create</PageTitle>
+
+<h1>Create</h1>
+
+<h2>SUPPLIER</h2>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <EditForm method="post" Model="SUPPLIER" OnValidSubmit="AddSUPPLIER" FormName="create" Enhance>
+            <DataAnnotationsValidator />
+            <ValidationSummary class="text-danger" role="alert"/>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email:</label> 
+                <InputText id="email" @bind-Value="SUPPLIER.Email" class="form-control" /> 
+                <ValidationMessage For="() => SUPPLIER.Email" class="text-danger" /> 
+            </div>        
+            <div class="mb-3">
+                <label for="companyname" class="form-label">CompanyName:</label> 
+                <InputText id="companyname" @bind-Value="SUPPLIER.CompanyName" class="form-control" /> 
+                <ValidationMessage For="() => SUPPLIER.CompanyName" class="text-danger" /> 
+            </div>        
+            <div class="mb-3">
+                <label for="phonenumber" class="form-label">PhoneNumber:</label> 
+                <InputText id="phonenumber" @bind-Value="SUPPLIER.PhoneNumber" class="form-control" /> 
+                <ValidationMessage For="() => SUPPLIER.PhoneNumber" class="text-danger" /> 
+            </div>        
+            <div class="mb-3">
+                <label for="producttype" class="form-label">ProductType:</label> 
+                <InputText id="producttype" @bind-Value="SUPPLIER.ProductType" class="form-control" /> 
+                <ValidationMessage For="() => SUPPLIER.ProductType" class="text-danger" /> 
+            </div>        
+            <button type="submit" class="btn btn-outline-primary">Create</button>
+        </EditForm>
+    </div>
+</div>
+
+<div>
+    <a href="/suppliers" class="btn btn-outline-secondary">Back to List</a>
+</div>
+
+@code {
+    [SupplyParameterFromForm]
+    private SUPPLIER SUPPLIER { get; set; } = new();
+
+    // To protect from overposting attacks, see https://learn.microsoft.com/aspnet/core/blazor/forms/#mitigate-overposting-attacks.
+    private async Task AddSUPPLIER()
+    {
+        using var context = DbFactory.CreateDbContext();
+        context.SUPPLIER.Add(SUPPLIER);
+        await context.SaveChangesAsync();
+        NavigationManager.NavigateTo("/suppliers");
+    }
+}

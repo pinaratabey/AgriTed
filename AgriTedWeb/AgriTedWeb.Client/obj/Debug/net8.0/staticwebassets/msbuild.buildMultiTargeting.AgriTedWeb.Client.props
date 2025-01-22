@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\AgriTedWeb.Client.props" />
+</Project>

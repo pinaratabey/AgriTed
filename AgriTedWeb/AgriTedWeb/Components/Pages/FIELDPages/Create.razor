@@ -1,0 +1,54 @@
+﻿@page "/fields/create"
+@using Microsoft.EntityFrameworkCore
+@using DataAccess
+@inject IDbContextFactory<AgriTedWeb.Data.AgriTedWebContext> DbFactory
+@inject NavigationManager NavigationManager
+
+<PageTitle>Create</PageTitle>
+
+<h1>Create</h1>
+
+<h2>FIELD</h2>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <EditForm method="post" Model="FIELD" OnValidSubmit="AddFIELD" FormName="create" Enhance>
+            <DataAnnotationsValidator />
+            <ValidationSummary class="text-danger" role="alert"/>
+            <div class="mb-3">
+                <label for="rentalfee" class="form-label">RentalFee:</label> 
+                <InputNumber id="rentalfee" @bind-Value="FIELD.RentalFee" class="form-control" /> 
+                <ValidationMessage For="() => FIELD.RentalFee" class="text-danger" /> 
+            </div>        
+            <div class="mb-3">
+                <label for="name" class="form-label">Name:</label> 
+                <InputText id="name" @bind-Value="FIELD.Name" class="form-control" /> 
+                <ValidationMessage For="() => FIELD.Name" class="text-danger" /> 
+            </div>        
+            <div class="mb-3">
+                <label for="size" class="form-label">Size:</label> 
+                <InputNumber id="size" @bind-Value="FIELD.Size" class="form-control" /> 
+                <ValidationMessage For="() => FIELD.Size" class="text-danger" /> 
+            </div>        
+            <button type="submit" class="btn btn-outline-primary">Create</button>
+        </EditForm>
+    </div>
+</div>
+
+<div>
+    <a href="/fields" class="btn btn-outline-secondary">Back to List</a>
+</div>
+
+@code {
+    [SupplyParameterFromForm]
+    private FIELD FIELD { get; set; } = new();
+
+    // To protect from overposting attacks, see https://learn.microsoft.com/aspnet/core/blazor/forms/#mitigate-overposting-attacks.
+    private async Task AddFIELD()
+    {
+        using var context = DbFactory.CreateDbContext();
+        context.FIELD.Add(FIELD);
+        await context.SaveChangesAsync();
+        NavigationManager.NavigateTo("/fields");
+    }
+}

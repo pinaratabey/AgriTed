@@ -1,0 +1,60 @@
+C:\Users\Pinar Hanım\source\repos\CMPE_232\DataAccess\bin\Debug\DataAccess.dll.config
+C:\Users\Pinar Hanım\source\repos\CMPE_232\DataAccess\bin\Debug\DataAccess.dll
+C:\Users\Pinar Hanım\source\repos\CMPE_232\DataAccess\bin\Debug\DataAccess.pdb
+C:\Users\Pinar Hanım\source\repos\CMPE_232\DataAccess\bin\Debug\EntityFramework.dll
+C:\Users\Pinar Hanım\source\repos\CMPE_232\DataAccess\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Pinar Hanım\source\repos\CMPE_232\DataAccess\bin\Debug\EntityFramework.xml
+C:\Users\Pinar Hanım\source\repos\CMPE_232\DataAccess\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Pinar Hanım\source\repos\CMPE_232\DataAccess\obj\Debug\DataAccess.csproj.AssemblyReference.cache
+C:\Users\Pinar Hanım\source\repos\CMPE_232\DataAccess\obj\Debug\DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\Pinar Hanım\source\repos\CMPE_232\DataAccess\obj\Debug\DataAccess.csproj.Up2Date
+C:\Users\Pinar Hanım\source\repos\CMPE_232\DataAccess\obj\Debug\DataAccess.dll
+C:\Users\Pinar Hanım\source\repos\CMPE_232\DataAccess\obj\Debug\DataAccess.pdb
+C:\Users\Pinar Hanım\source\repos\CMPE_232 - Kopya\DataAccess\bin\Debug\DataAccess.dll.config
+C:\Users\Pinar Hanım\source\repos\CMPE_232 - Kopya\DataAccess\bin\Debug\DataAccess.dll
+C:\Users\Pinar Hanım\source\repos\CMPE_232 - Kopya\DataAccess\bin\Debug\DataAccess.pdb
+C:\Users\Pinar Hanım\source\repos\CMPE_232 - Kopya\DataAccess\bin\Debug\EntityFramework.dll
+C:\Users\Pinar Hanım\source\repos\CMPE_232 - Kopya\DataAccess\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Pinar Hanım\source\repos\CMPE_232 - Kopya\DataAccess\bin\Debug\EntityFramework.xml
+C:\Users\Pinar Hanım\source\repos\CMPE_232 - Kopya\DataAccess\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Pinar Hanım\source\repos\CMPE_232 - Kopya\DataAccess\obj\Debug\DataAccess.csproj.AssemblyReference.cache
+C:\Users\Pinar Hanım\source\repos\CMPE_232 - Kopya\DataAccess\obj\Debug\DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\Pinar Hanım\source\repos\CMPE_232 - Kopya\DataAccess\obj\Debug\DataAccess.csproj.Up2Date
+C:\Users\Pinar Hanım\source\repos\CMPE_232 - Kopya\DataAccess\obj\Debug\DataAccess.dll
+C:\Users\Pinar Hanım\source\repos\CMPE_232 - Kopya\DataAccess\obj\Debug\DataAccess.pdb
+C:\Users\albay\Desktop\CMPE_232 - Kopya - (Ne olur ne olmaz)\DataAccess\bin\Debug\DataAccess.dll.config
+C:\Users\albay\Desktop\CMPE_232 - Kopya - (Ne olur ne olmaz)\DataAccess\bin\Debug\DataAccess.dll
+C:\Users\albay\Desktop\CMPE_232 - Kopya - (Ne olur ne olmaz)\DataAccess\bin\Debug\DataAccess.pdb
+C:\Users\albay\Desktop\CMPE_232 - Kopya - (Ne olur ne olmaz)\DataAccess\bin\Debug\EntityFramework.dll
+C:\Users\albay\Desktop\CMPE_232 - Kopya - (Ne olur ne olmaz)\DataAccess\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\albay\Desktop\CMPE_232 - Kopya - (Ne olur ne olmaz)\DataAccess\bin\Debug\EntityFramework.xml
+C:\Users\albay\Desktop\CMPE_232 - Kopya - (Ne olur ne olmaz)\DataAccess\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\albay\Desktop\CMPE_232 - Kopya - (Ne olur ne olmaz)\DataAccess\obj\Debug\DataAccess.csproj.AssemblyReference.cache
+C:\Users\albay\Desktop\CMPE_232 - Kopya - (Ne olur ne olmaz)\DataAccess\obj\Debug\DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\albay\Desktop\CMPE_232 - Kopya - (Ne olur ne olmaz)\DataAccess\obj\Debug\DataAccess.csproj.Up2Date
+C:\Users\albay\Desktop\CMPE_232 - Kopya - (Ne olur ne olmaz)\DataAccess\obj\Debug\DataAccess.dll
+C:\Users\albay\Desktop\CMPE_232 - Kopya - (Ne olur ne olmaz)\DataAccess\obj\Debug\DataAccess.pdb
+C:\Users\Pinar Hanım\Desktop\CMPE_232 - Kopya - (Ne olur ne olmaz)3\CMPE_232 - Kopya - (Ne olur ne olmaz)\DataAccess\bin\Debug\DataAccess.dll.config
+C:\Users\Pinar Hanım\Desktop\CMPE_232 - Kopya - (Ne olur ne olmaz)3\CMPE_232 - Kopya - (Ne olur ne olmaz)\DataAccess\bin\Debug\DataAccess.dll
+C:\Users\Pinar Hanım\Desktop\CMPE_232 - Kopya - (Ne olur ne olmaz)3\CMPE_232 - Kopya - (Ne olur ne olmaz)\DataAccess\bin\Debug\DataAccess.pdb
+C:\Users\Pinar Hanım\Desktop\CMPE_232 - Kopya - (Ne olur ne olmaz)3\CMPE_232 - Kopya - (Ne olur ne olmaz)\DataAccess\bin\Debug\EntityFramework.dll
+C:\Users\Pinar Hanım\Desktop\CMPE_232 - Kopya - (Ne olur ne olmaz)3\CMPE_232 - Kopya - (Ne olur ne olmaz)\DataAccess\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Pinar Hanım\Desktop\CMPE_232 - Kopya - (Ne olur ne olmaz)3\CMPE_232 - Kopya - (Ne olur ne olmaz)\DataAccess\bin\Debug\EntityFramework.xml
+C:\Users\Pinar Hanım\Desktop\CMPE_232 - Kopya - (Ne olur ne olmaz)3\CMPE_232 - Kopya - (Ne olur ne olmaz)\DataAccess\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Pinar Hanım\Desktop\CMPE_232 - Kopya - (Ne olur ne olmaz)3\CMPE_232 - Kopya - (Ne olur ne olmaz)\DataAccess\obj\Debug\DataAccess.csproj.AssemblyReference.cache
+C:\Users\Pinar Hanım\Desktop\CMPE_232 - Kopya - (Ne olur ne olmaz)3\CMPE_232 - Kopya - (Ne olur ne olmaz)\DataAccess\obj\Debug\DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\Pinar Hanım\Desktop\CMPE_232 - Kopya - (Ne olur ne olmaz)3\CMPE_232 - Kopya - (Ne olur ne olmaz)\DataAccess\obj\Debug\DataAccess.csproj.Up2Date
+C:\Users\Pinar Hanım\Desktop\CMPE_232 - Kopya - (Ne olur ne olmaz)3\CMPE_232 - Kopya - (Ne olur ne olmaz)\DataAccess\obj\Debug\DataAccess.dll
+C:\Users\Pinar Hanım\Desktop\CMPE_232 - Kopya - (Ne olur ne olmaz)3\CMPE_232 - Kopya - (Ne olur ne olmaz)\DataAccess\obj\Debug\DataAccess.pdb
+C:\Users\Pinar Hanım\Desktop\CMPE_232 - Kopya - (Ne olur ne olmaz)4\CMPE_232 - Kopya - (Ne olur ne olmaz)\DataAccess\bin\Debug\DataAccess.dll.config
+C:\Users\Pinar Hanım\Desktop\CMPE_232 - Kopya - (Ne olur ne olmaz)4\CMPE_232 - Kopya - (Ne olur ne olmaz)\DataAccess\bin\Debug\DataAccess.dll
+C:\Users\Pinar Hanım\Desktop\CMPE_232 - Kopya - (Ne olur ne olmaz)4\CMPE_232 - Kopya - (Ne olur ne olmaz)\DataAccess\bin\Debug\DataAccess.pdb
+C:\Users\Pinar Hanım\Desktop\CMPE_232 - Kopya - (Ne olur ne olmaz)4\CMPE_232 - Kopya - (Ne olur ne olmaz)\DataAccess\bin\Debug\EntityFramework.dll
+C:\Users\Pinar Hanım\Desktop\CMPE_232 - Kopya - (Ne olur ne olmaz)4\CMPE_232 - Kopya - (Ne olur ne olmaz)\DataAccess\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Pinar Hanım\Desktop\CMPE_232 - Kopya - (Ne olur ne olmaz)4\CMPE_232 - Kopya - (Ne olur ne olmaz)\DataAccess\bin\Debug\EntityFramework.xml
+C:\Users\Pinar Hanım\Desktop\CMPE_232 - Kopya - (Ne olur ne olmaz)4\CMPE_232 - Kopya - (Ne olur ne olmaz)\DataAccess\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Pinar Hanım\Desktop\CMPE_232 - Kopya - (Ne olur ne olmaz)4\CMPE_232 - Kopya - (Ne olur ne olmaz)\DataAccess\obj\Debug\DataAccess.csproj.AssemblyReference.cache
+C:\Users\Pinar Hanım\Desktop\CMPE_232 - Kopya - (Ne olur ne olmaz)4\CMPE_232 - Kopya - (Ne olur ne olmaz)\DataAccess\obj\Debug\DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\Pinar Hanım\Desktop\CMPE_232 - Kopya - (Ne olur ne olmaz)4\CMPE_232 - Kopya - (Ne olur ne olmaz)\DataAccess\obj\Debug\DataAccess.csproj.Up2Date
+C:\Users\Pinar Hanım\Desktop\CMPE_232 - Kopya - (Ne olur ne olmaz)4\CMPE_232 - Kopya - (Ne olur ne olmaz)\DataAccess\obj\Debug\DataAccess.dll
+C:\Users\Pinar Hanım\Desktop\CMPE_232 - Kopya - (Ne olur ne olmaz)4\CMPE_232 - Kopya - (Ne olur ne olmaz)\DataAccess\obj\Debug\DataAccess.pdb
